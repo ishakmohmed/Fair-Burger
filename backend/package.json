@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend for FairBurger by Mohmed Ishak.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/index",
     "server": "nodemon backend/index",

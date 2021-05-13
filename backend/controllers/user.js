@@ -12,7 +12,6 @@ const authenticateUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
   } else {
@@ -22,6 +21,7 @@ const authenticateUser = asyncHandler(async (req, res) => {
 });
 
 const registerUser = asyncHandler(async (req, res) => {
+  console.log("DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG...");
   const { name, email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -42,8 +42,8 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: createdUser._id,
       name: createdUser.name,
       email: createdUser.email,
-      isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser._id),
+      ok: true,
     });
   } else {
     res.status(400);
@@ -59,7 +59,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
     });
   } else {
     res.status(404);

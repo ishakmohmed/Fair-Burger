@@ -18,8 +18,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes); 
-// /api/users to register
-// /api/users/login to login
 
 app.use(notFound);
 app.use(errorHandler);
