@@ -21,7 +21,6 @@ const authenticateUser = asyncHandler(async (req, res) => {
 });
 
 const registerUser = asyncHandler(async (req, res) => {
-  console.log("DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG...");
   const { name, email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -43,7 +42,6 @@ const registerUser = asyncHandler(async (req, res) => {
       name: createdUser.name,
       email: createdUser.email,
       token: generateToken(createdUser._id),
-      ok: true,
     });
   } else {
     res.status(400);

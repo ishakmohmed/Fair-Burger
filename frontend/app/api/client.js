@@ -4,7 +4,7 @@ import authStorage from "../auth/storage";
 import settings from "../config/settings";
 
 const apiClient = create({
-  baseURL: settings.apiUrl, 
+  baseURL: settings.apiUrl,
 });
 
 apiClient.addAsyncRequestTransform(async (request) => {
@@ -23,7 +23,7 @@ apiClient.get = async (url, params, axiosConfig) => {
 
   if (response.ok) {
     cache.store(url, response.data);
-    return response; 
+    return response;
   }
 
   const data = await cache.get(url);
