@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Dimensions, useColorScheme } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import Tab from "./Tab";
 import colors from "../config/colors";
 
