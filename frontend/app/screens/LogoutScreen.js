@@ -1,14 +1,13 @@
 import React from "react";
-import { Text } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 
-function AddFoodScreen() {
+function LogoutScreen() {
   return (
     <Screen>
-      <HeadingText>Add New Menu</HeadingText>
+      <HeadingText>Logout</HeadingText>
     </Screen>
   );
 }
 
-export default AddFoodScreen;
+export default LogoutScreen;

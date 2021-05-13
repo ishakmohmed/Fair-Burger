@@ -8,14 +8,12 @@ function HeadingText({ children }) {
 
 const styles = StyleSheet.create({
   text: {
-    backgroundColor: colors.strongPink,
-    color: colors.white,
+    color: colors.black,
     fontSize: 30,
     fontWeight: "bold",
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-    marginBottom: 20,
+    margin: 20,
     textAlign: "center",
-    padding: 20,
   },
 });
 

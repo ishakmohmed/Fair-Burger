@@ -1,6 +1,6 @@
 export default {
+  black: "#000",
   pink: "#fc5c65",
-  strongPink: "#D81159",
   white: "#FFFFFF",
-  darkBlue: "#222E50",
+  darkBlue: "#090446",
 };
