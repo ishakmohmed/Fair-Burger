@@ -3,6 +3,7 @@ import { View, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import Button from "../components/Button";
+import DancingBurger from "../components/DancingBurger";
 import AuthContext from "../auth/context";
 
 function LogoutScreen() {
@@ -12,6 +13,7 @@ function LogoutScreen() {
     <Screen>
       <View style={styles.container}>
         <HeadingText>Logout?</HeadingText>
+        <DancingBurger />
         <Button color="purple" title="Logout!" onPress={() => setUser(null)} />
       </View>
     </Screen>
@@ -20,7 +22,8 @@ function LogoutScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
 
