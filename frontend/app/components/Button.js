@@ -16,14 +16,14 @@ function Button({ title, onPress, color = "red" }) {
 
 const styles = StyleSheet.create({
   button: {
+    alignItems: "center",
     alignSelf: "center",
     borderRadius: 10,
     elevation: 5,
     justifyContent: "center",
-    alignItems: "center",
+    marginVertical: 10,
     padding: 15,
     width: "100%",
-    marginVertical: 10,
   },
   text: {
     color: colors.white,

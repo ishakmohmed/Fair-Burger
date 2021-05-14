@@ -5,7 +5,7 @@ import colors from "../config/colors";
 
 const { width } = Dimensions.get("screen");
 
-function TabBar({ state, navigation }) {
+function TabBar({ navigation, state }) {
   const [selected, setSelected] = useState("queue");
   const { routes } = state;
   const renderColor = (currentTab) =>
@@ -37,19 +37,19 @@ function TabBar({ state, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.darkBlue,
+    borderRadius: 20,
     elevation: 15,
     flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: colors.darkBlue,
-    width: "90%",
     height: 80,
-    borderRadius: 20,
+    justifyContent: "space-between",
+    width: "90%",
   },
   wrapper: {
     alignItems: "center",
+    bottom: 20,
     justifyContent: "center",
     position: "absolute",
-    bottom: 20,
     width,
   },
 });

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-
 import Screen from "../components/Screen";
 import {
   Form,
@@ -59,7 +58,6 @@ function RegisterScreen() {
             error={error} 
             visible={error}
           />
-
           <FormField
             autoCorrect={false}
             icon="account"

@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabBar from "../components/TabBar";
-
 import OrderScreen from "../screens/OrderScreen";
 import QueueScreen from "../screens/QueueScreen";
 import EditFoodScreen from "../screens/EditFoodScreen";
