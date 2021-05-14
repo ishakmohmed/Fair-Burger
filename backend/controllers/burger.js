@@ -24,4 +24,8 @@ const addBurger = asyncHandler(async (req, res) => {
   }
 });
 
+const deleteBurger = asyncHandler(async (req, res) => {
+  // add after this
+});
+
 export { addBurger };

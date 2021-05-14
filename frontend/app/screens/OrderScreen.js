@@ -5,7 +5,7 @@ import HeadingText from "../components/HeadingText";
 function OrderScreen() {
   return (
     <Screen>
-      <HeadingText>Order Now</HeadingText>
+      <HeadingText>Add Order</HeadingText>
     </Screen>
   );
 }

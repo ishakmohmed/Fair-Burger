@@ -12,7 +12,7 @@ function Card({ title, subTitle }) {
         source={require("../assets/burger.jpg")}
       >
         <View style={styles.detailsContainer}>
-          <Text style={styles.title} numberOfLines={2}>
+          <Text style={styles.title} numberOfLines={1}>
             Customer: {title}
           </Text>
           <Text style={styles.subTitle} numberOfLines={100}>
