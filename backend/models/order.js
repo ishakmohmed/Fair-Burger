@@ -21,4 +21,4 @@ const orderSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.model("Order", burgerSchema);
+export default mongoose.model("Order", orderSchema);
