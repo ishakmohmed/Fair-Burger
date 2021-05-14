@@ -8,14 +8,18 @@ export default useAuth = () => {
   const { user, setUser } = useContext(AuthContext);
 
   const logIn = (authToken) => {
-    const user = jwtDecode(authToken);
-    setUser(user);
-    authStorage.storeToken(authToken); 
+    try {
+      const user = jwtDecode(authToken);
+      setUser(user);
+      authStorage.storeToken(authToken);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const logOut = () => {
     setUser(null);
-    authStorage.removeToken(); 
+    authStorage.removeToken();
   };
 
   return { user, logIn, logOut };

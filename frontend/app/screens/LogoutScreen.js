@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
+import { View, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
+import Button from "../components/Button";
+import AuthContext from "../auth/context";
 
 function LogoutScreen() {
+  const { user, setUser } = useContext(AuthContext);
+
   return (
     <Screen>
-      <HeadingText>Logout</HeadingText>
+      <View style={styles.container}>
+        <HeadingText>Logout?</HeadingText>
+        <Button title="Logout!" onPress={() => setUser(null)} />
+      </View>
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+});
 
 export default LogoutScreen;

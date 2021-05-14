@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
     width: "90%",
     height: 80,
     borderRadius: 20,
-    borderWidth: 0.5,
-    borderColor: colors.white,
   },
   wrapper: {
     alignItems: "center",
