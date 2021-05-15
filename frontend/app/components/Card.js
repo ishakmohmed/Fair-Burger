@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     overflow: "hidden",
-    width: "95%",
+    width: "100%",
   },
   detailsContainer: {
     backgroundColor: "rgba(0,0,0,0.6)",
