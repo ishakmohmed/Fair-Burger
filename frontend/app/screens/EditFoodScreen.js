@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
@@ -18,6 +18,8 @@ const validationSchema = Yup.object().shape({
 });
 
 function EditFoodScreen() {
+  const [imageUri, setImageUri] = useState("");
+
   const handleSubmit = () => {
     console.log("BREAKPOINT.");
   };
@@ -47,7 +49,10 @@ function EditFoodScreen() {
           name="Price"
           placeholder="0"
         />
-        <ImageInput />
+        <ImageInput
+          imageUri={imageUri}
+          onChangeImage={(uri) => setImageUri(uri)}
+        />
         <SubmitButton title="Add Item" />
       </Form>
     </Screen>
