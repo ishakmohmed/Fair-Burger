@@ -8,6 +8,8 @@ function QueueScreen() {
     <Screen>
       <HeadingText>Currently Waiting</HeadingText>
       <Card title="Mohmed Ishak" subTitle="10 cheeseburgers." />
+      <Card title="Mohmed Ishak" subTitle="10 cheeseburgers." />
+      <Card title="Mohmed Ishak" subTitle="10 cheeseburgers." />
     </Screen>
   );
 }
