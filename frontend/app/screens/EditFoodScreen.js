@@ -9,6 +9,7 @@ import {
 } from "../components/forms";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
+import foodApi from "../api/food";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label("Name"),
@@ -16,8 +17,12 @@ const validationSchema = Yup.object().shape({
   images: Yup.array().min(1, "Please select at least one image."),
 });
 
-const handleSubmit = async (data, { resetForm }) => {
-  // something happens
+const handleSubmit = async ({ name, price, images }, { resetForm }) => {
+  const result = await foodApi.addFood({ name, price, images });
+
+  if (!result.ok) {
+    return alert("Could not add food.");
+  }
 
   resetForm();
 };
