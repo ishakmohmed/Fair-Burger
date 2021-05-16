@@ -2,9 +2,9 @@ import asyncHandler from "express-async-handler";
 import Burger from "../models/burger.js";
 
 const addBurger = asyncHandler(async (req, res) => {
-  const { image, name, price } = req.body;
+  const { images, name, price } = req.body;
 
-  if (!image || !name || !price) {
+  if (!images || !name || !price) {
     res.status(400);
     throw new Error(
       "Bad request. Please make sure you enter name, price, and image of burger."
@@ -14,7 +14,7 @@ const addBurger = asyncHandler(async (req, res) => {
   const createdBurger = await Burger.create({
     image,
     name,
-    price,
+    prices,
   });
 
   if (createdBurger) res.status(201);

@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Alert,
 } from "react-native";
-import colors from "../../config/colors";
+import colors from "../config/colors";
 import * as ImagePicker from "expo-image-picker";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";

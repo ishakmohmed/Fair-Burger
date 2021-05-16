@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
-import * as Yup from "yup";
 
 function EditFoodScreen() {
   return (
