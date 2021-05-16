@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import colors from "../config/colors";
 import * as ImagePicker from "expo-image-picker";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function ImageInput({ imageUri, onChangeImage }) {
@@ -33,10 +32,8 @@ function ImageInput({ imageUri, onChangeImage }) {
   const selectImage = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
-        // optional object
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 0.5, // max is 1
-        // there are bunch of other properties too in this object
+        quality: 1,
       });
       if (!result.cancelled) onChangeImage(result.uri);
     } catch (error) {
@@ -64,9 +61,10 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: colors.light,
-    borderRadius: 15,
+    borderRadius: 10,
     height: 100,
     justifyContent: "center",
+    marginVertical: 10,
     overflow: "hidden",
     width: 100,
   },
