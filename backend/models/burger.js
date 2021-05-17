@@ -2,7 +2,12 @@ import mongoose from "mongoose";
 
 const burgerSchema = mongoose.Schema(
   {
-    images: [String],
+    images: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     name: {
       type: String,
       required: true,

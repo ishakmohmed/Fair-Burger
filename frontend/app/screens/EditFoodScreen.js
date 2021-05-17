@@ -20,9 +20,9 @@ const validationSchema = Yup.object().shape({
 const handleSubmit = async ({ name, price, images }, { resetForm }) => {
   const result = await foodApi.addFood({ name, price, images });
 
-  if (!result.ok) {
-    return alert("Could not add food.");
-  }
+  // if (!result.ok) {
+  //   return alert("Could not add food.");
+  // }
 
   resetForm();
 };

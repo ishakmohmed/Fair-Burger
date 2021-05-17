@@ -6,12 +6,8 @@ const addFood = ({ name, price, images }) => {
   data.append("price", price);
 
   images.forEach((image) => {
-    data.append("images", name);
+    data.append("images", image);
   });
-
-  console.log("THIS LINE HAS BEEN REACHED.");
-  console.log("AND THE DATA IS >>>");
-  console.log(data);
 
   client.post("/api/burgers", {
     data,

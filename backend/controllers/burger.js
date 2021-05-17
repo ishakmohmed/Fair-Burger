@@ -10,13 +10,13 @@ const addBurger = asyncHandler(async (req, res) => {
       "Bad request. Please make sure you enter name, price, and image(s) of burger."
     );
   }
-  console.log("REACHED ONE!");
+
   const createdBurger = await Burger.create({
     images,
     name,
     price,
   });
-  console.log("REACHED TWO!");
+  
   if (createdBurger) res.status(201).json({ createdBurger });
   else {
     res.status(400);
