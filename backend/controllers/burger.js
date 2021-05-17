@@ -16,7 +16,7 @@ const addBurger = asyncHandler(async (req, res) => {
     name,
     price,
   });
-  
+
   if (createdBurger) res.status(201).json({ createdBurger });
   else {
     res.status(400);

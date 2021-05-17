@@ -1,17 +1,11 @@
 import client from "./client";
 
-const addFood = ({ name, price, images }) => {
-  const data = new FormData();
-  data.append("name", name);
-  data.append("price", price);
+const addFood = (data) => {
+  const modifiedData = { ...data };
 
-  images.forEach((image) => {
-    data.append("images", image);
-  });
+  console.log("the encoded data is >>>", modifiedData);
 
-  client.post("/api/burgers", {
-    data,
-  });
+  // client.post("/api/burgers", modifiedData);
 };
 
 export default {

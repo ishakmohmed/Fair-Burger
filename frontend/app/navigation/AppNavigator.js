@@ -3,7 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabBar from "../components/TabBar";
 import OrderScreen from "../screens/OrderScreen";
 import QueueScreen from "../screens/QueueScreen";
-import EditFoodScreen from "../screens/EditFoodScreen";
+import AddFoodScreen from "../screens/AddFoodScreen";
+import DeleteFoodScreen from "../screens/DeleteFoodScreen";
 import LogoutScreen from "../screens/LogoutScreen";
 
 const Tab = createBottomTabNavigator();
@@ -19,12 +20,17 @@ const AppNavigator = () => {
       <Tab.Screen
         name="order"
         component={OrderScreen}
+        initialParams={{ icon: "grading" }}
+      />
+      <Tab.Screen
+        name="+food"
+        component={AddFoodScreen}
         initialParams={{ icon: "fastfood" }}
       />
       <Tab.Screen
-        name="edit food"
-        component={EditFoodScreen}
-        initialParams={{ icon: "edit" }}
+        name="-food"
+        component={DeleteFoodScreen}
+        initialParams={{ icon: "no-food" }}
       />
       <Tab.Screen
         name="logout"

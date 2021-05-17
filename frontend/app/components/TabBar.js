@@ -38,12 +38,12 @@ function TabBar({ navigation, state }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.darkBlue,
-    borderRadius: 20,
+    borderRadius: 25,
     elevation: 15,
     flexDirection: "row",
     height: 80,
     justifyContent: "space-between",
-    width: "90%",
+    width: "95%",
   },
   wrapper: {
     alignItems: "center",
