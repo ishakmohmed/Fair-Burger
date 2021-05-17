@@ -7,17 +7,17 @@ const addBurger = asyncHandler(async (req, res) => {
   if (!images || !name || !price) {
     res.status(400);
     throw new Error(
-      "Bad request. Please make sure you enter name, price, and image of burger."
+      "Bad request. Please make sure you enter name, price, and image(s) of burger."
     );
   }
-
+  console.log("REACHED ONE!");
   const createdBurger = await Burger.create({
-    image,
+    images,
     name,
-    prices,
+    price,
   });
-
-  if (createdBurger) res.status(201);
+  console.log("REACHED TWO!");
+  if (createdBurger) res.status(201).json({ createdBurger });
   else {
     res.status(400);
     throw new Error("Invalid burger data.");

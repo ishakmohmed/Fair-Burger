@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const burgerSchema = mongoose.Schema(
   {
+    images: [String],
     name: {
       type: String,
       required: true,
@@ -10,12 +11,6 @@ const burgerSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-    images: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
   },
   {
     timestamps: true,
