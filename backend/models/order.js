@@ -9,7 +9,11 @@ const orderSchema = mongoose.Schema(
     },
     orderItems: [
       {
-        name: { type: String, required: true },
+        name: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: true,
+          ref: "Burger",
+        },
         qty: { type: Number, required: true },
         price: { type: Number, required: true },
       },

@@ -6,9 +6,12 @@ const addFood = (data) => {
 
 const getFoods = () => client.get("/api/burgers");
 
-const deleteFood = (id) => client.post("/api/burgers", id);
+const deleteFood = async (id) => {
+  return await client.delete(`/api/burgers/${id}`);
+};
 
 export default {
   addFood,
+  deleteFood,
   getFoods,
 };

@@ -24,7 +24,15 @@ const addBurger = asyncHandler(async (req, res) => {
 });
 
 const deleteBurger = asyncHandler(async (req, res) => {
-  // add after this
+  const burger = await Burger.findById(req.params.id);
+
+  if (burger) {
+    await burger.remove();
+    res.json({ message: "Food removed." });
+  } else {
+    res.status(404);
+    throw new Error("Food not found.");
+  }
 });
 
 const getBurgers = asyncHandler(async (req, res) => {
@@ -33,4 +41,4 @@ const getBurgers = asyncHandler(async (req, res) => {
   res.json(burgers);
 });
 
-export { addBurger, getBurgers };
+export { addBurger, deleteBurger, getBurgers };
