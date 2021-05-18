@@ -12,6 +12,7 @@ import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import colors from "../config/colors";
 import foodApi from "../api/food";
+import useApi from "../hooks/useApi";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label("Name"),
@@ -19,26 +20,34 @@ const validationSchema = Yup.object().shape({
   images: Yup.array().min(1, "Please select at least one image."),
 });
 
-const handleSubmit = async (data, { resetForm }) => {
-  try {
-    await foodApi.addFood(data);
-  } catch (error) {
-    return alert("Could not add food");
-  }
-
-  // Actually, using apisauce, we don't need a try-catch block, and the right way is to check
-  // whether the result.ok evaluates to true or not like below, but for whatever reason that
-  // I couldn't figure out, it result.ok is always undefined in this case and we need to
-  // write try-catch block when calling the API to remove all warnings.
-
-  // if (!result.ok) {
-  //   return alert("Could not add food.");
-  // }
-
-  resetForm();
-};
-
 function AddFoodScreen() {
+  const addFoodApi = useApi(foodApi.addFood);
+
+  const handleSubmit = async (data, { resetForm }) => {
+    const result = await addFoodApi.request(data);
+
+    if (!result.ok) return alert("Could not add food");
+
+    resetForm();
+
+    // try {
+    //   await foodApi.addFood(data);
+    // } catch (error) {
+    //   return alert("Could not add food");
+    // }
+
+    // // Actually, using apisauce, we don't need a try-catch block, and the right way is to check
+    // // whether the result.ok evaluates to true or not like below, but for whatever reason that
+    // // I couldn't figure out, it result.ok is always undefined in this case and we need to
+    // // write try-catch block when calling the API to remove all warnings.
+
+    // // if (!result.ok) {
+    // //   return alert("Could not add food.");
+    // // }
+
+    // resetForm();
+  };
+
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Food</HeadingText>
@@ -69,7 +78,7 @@ function AddFoodScreen() {
           />
           <Text style={styles.text}>Image(s)</Text>
           <FormImagePicker name="images" />
-          <SubmitButton title="Add Food" />
+          <SubmitButton title="Add Food" color="orange" />
         </Form>
       </View>
     </Screen>

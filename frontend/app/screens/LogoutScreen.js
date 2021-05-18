@@ -7,7 +7,7 @@ import DancingBurger from "../components/DancingBurger";
 import AuthContext from "../auth/context";
 
 function LogoutScreen() {
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
 
   return (
     <Screen>
