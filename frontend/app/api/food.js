@@ -10,7 +10,7 @@ const addFood = (data) => {
   //   );
   //   image = data.secure_url;
   // });
-  
+
   client.post("/api/burgers", data);
 };
 
