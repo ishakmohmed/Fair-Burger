@@ -5,7 +5,6 @@ import {
   Form,
   FormField,
   SubmitButton,
-  FormImagePicker,
 } from "../components/forms";
 import Text from "../components/Text";
 import Screen from "../components/Screen";
@@ -16,7 +15,6 @@ import foodApi from "../api/food";
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label("Name"),
   price: Yup.number().required().min(1).max(1000).label("Price"),
-  images: Yup.array().min(1, "Please select at least one image."),
 });
 
 function AddFoodScreen() {
@@ -67,8 +65,6 @@ function AddFoodScreen() {
             placeholder="0"
             width={120}
           />
-          <Text style={styles.text}>Image(s)</Text>
-          <FormImagePicker name="images" />
           <SubmitButton title="Add Food" color="orange" />
         </Form>
       </View>
