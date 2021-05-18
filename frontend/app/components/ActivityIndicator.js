@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   overlay: {
     backgroundColor: "white",
     height: "100%",
-    opacity: 0.8,
+    opacity: 1,
     width: "100%",
     zIndex: 1,
   },

@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
-import { addBurger } from "../controllers/burger.js";
+import { addBurger, getBurgers } from "../controllers/burger.js";
 
-router.route("/").post(addBurger);
+router.route("/").get(getBurgers).post(addBurger);
 
 export default router;

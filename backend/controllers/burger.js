@@ -27,4 +27,10 @@ const deleteBurger = asyncHandler(async (req, res) => {
   // add after this
 });
 
-export { addBurger };
+const getBurgers = asyncHandler(async (req, res) => {
+  const burgers = await Burger.find({});
+
+  res.json(burgers);
+});
+
+export { addBurger, getBurgers };
