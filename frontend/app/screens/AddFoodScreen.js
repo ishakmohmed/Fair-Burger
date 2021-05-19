@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton } from "../components/forms";
@@ -7,6 +7,7 @@ import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import colors from "../config/colors";
 import foodApi from "../api/food";
+import AuthContext from "../auth/context";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label("Name"),
@@ -14,9 +15,11 @@ const validationSchema = Yup.object().shape({
 });
 
 function AddFoodScreen() {
+  const { user } = useContext(AuthContext);
+
   const handleSubmit = async (data, { resetForm }) => {
     try {
-      await foodApi.addFood(data);
+      await foodApi.addFood({ ...data, customerId: user.id });
     } catch (error) {
       return alert("Could not add food");
     }

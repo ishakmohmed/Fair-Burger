@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
@@ -6,8 +6,10 @@ import Food from "../components/Food";
 import foodApi from "../api/food";
 import ActivityIndicator from "../components/ActivityIndicator";
 import { Ionicons } from "@expo/vector-icons";
+import AuthContext from "../auth/context";
 
 function DeleteFoodScreen() {
+  const { user } = useContext(AuthContext);
   const { data, error, loading, request: loadFoods } = useApi(foodApi.getFoods);
 
   useEffect(() => {
@@ -16,11 +18,11 @@ function DeleteFoodScreen() {
 
   const handleDelete = async (id) => {
     await foodApi.deleteFood(id);
-    loadFoods();
+    await loadFoods(user.id);
   };
 
-  const handlePress = () => {
-    loadFoods();
+  const handlePress = async () => {
+    await loadFoods(user.id);
   };
 
   return (

@@ -4,7 +4,7 @@ const addFood = (data) => {
   client.post("/api/burgers", data);
 };
 
-const getFoods = () => client.get("/api/burgers");
+const getFoods = (id) => client.get(`/api/burgers/${id}`);
 
 const deleteFood = async (id) => {
   return await client.delete(`/api/burgers/${id}`);

@@ -15,7 +15,9 @@ function QueueScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    padding: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
   },
 });
 
