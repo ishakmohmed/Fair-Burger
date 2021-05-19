@@ -20,7 +20,7 @@ function DeleteFoodScreen() {
   );
 
   useEffect(() => {
-    loadFoods();
+    loadFoodsInitially();
   }, []);
 
   const handleDelete = async (id) => {
@@ -29,6 +29,10 @@ function DeleteFoodScreen() {
   };
 
   const handlePress = async () => {
+    await loadFoods(user.id);
+  };
+
+  const loadFoodsInitially = async () => {
     await loadFoods(user.id);
   };
 

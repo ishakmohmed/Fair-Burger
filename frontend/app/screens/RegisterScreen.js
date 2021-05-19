@@ -13,6 +13,8 @@ import authApi from "../api/auth";
 import userApi from "../api/users";
 import useApi from "../hooks/useApi";
 import ActivityIndicator from "../components/ActivityIndicator";
+import Text from "../components/Text";
+import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -21,8 +23,8 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegisterScreen() {
-  const registerApi = useApi(userApi.register); 
-  const loginApi = useApi(authApi.login); 
+  const registerApi = useApi(userApi.register);
+  const loginApi = useApi(authApi.login);
   const auth = useAuth();
   const [error, setError] = useState();
 
@@ -54,16 +56,15 @@ function RegisterScreen() {
           onSubmit={(values) => handleSubmit(values)}
           validationSchema={validationSchema}
         >
-          <ErrorMessage
-            error={error} 
-            visible={error}
-          />
+          <ErrorMessage error={error} visible={error} />
+          <Text style={styles.text}>Name</Text>
           <FormField
             autoCorrect={false}
             icon="account"
             name="name"
             placeholder="Name"
           />
+          <Text style={styles.text}>Email</Text>
           <FormField
             autoCapitalize="none"
             autoCorrect={false}
@@ -73,6 +74,7 @@ function RegisterScreen() {
             placeholder="Email"
             textContentType="emailAddress"
           />
+          <Text style={styles.text}>Password</Text>
           <FormField
             autoCapitalize="none"
             autoCorrect={false}
@@ -92,6 +94,12 @@ function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  text: {
+    color: colors.black,
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 5,
   },
 });
 

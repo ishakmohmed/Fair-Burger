@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton } from "../components/forms";
 import Text from "../components/Text";
@@ -7,6 +7,8 @@ import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import colors from "../config/colors";
 import AuthContext from "../auth/context";
+import { Ionicons } from "@expo/vector-icons";
+import FoodInOrderScreen from "../components/FoodInOrderScreen";
 
 const validationSchema = Yup.object().shape({
   customer: Yup.string().required().min(1).label("Name"),
@@ -18,9 +20,19 @@ function OrderScreen() {
 
   const handleSubmit = () => {};
 
+  const handlePress = () => {};
+
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Order</HeadingText>
+      <TouchableOpacity onPress={handlePress}>
+        <Ionicons
+          style={styles.resetButton}
+          name="close-circle"
+          size={50}
+          color="black"
+        />
+      </TouchableOpacity>
       <Form
         initialValues={{
           customer: "",
@@ -29,21 +41,20 @@ function OrderScreen() {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Text style={styles.text}>Food Name</Text>
+        <Text style={styles.text}>Customer Name</Text>
         <FormField
           maxLength={255}
           numberOfLines={1}
           name="name"
-          placeholder="Food"
+          placeholder="Name"
         />
-        <Text style={styles.text}>Price</Text>
-        <FormField
-          keyboardType="numeric"
-          maxLength={6}
-          name="price"
-          placeholder="0"
-          width={120}
-        />
+        <View>
+          <ScrollView horizontal>
+            <FoodInOrderScreen foodName="some burger" foodPrice={44} />
+            <FoodInOrderScreen foodName="some burger" foodPrice={44} />
+            <FoodInOrderScreen foodName="some burger" foodPrice={44} />
+          </ScrollView>
+        </View>
         <SubmitButton title="Add Order" color="purple" />
       </Form>
     </Screen>
@@ -53,6 +64,14 @@ function OrderScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  resetButton: {
+    marginBottom: 15,
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  scrollViewContainer: {
+    flex: 1,
   },
   text: {
     color: colors.black,

@@ -9,8 +9,10 @@ import {
   FormField,
   SubmitButton,
 } from "../components/forms";
+import Text from "../components/Text";
 import authApi from "../api/auth";
 import useAuth from "../auth/useAuth";
+import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -47,21 +49,23 @@ function LoginScreen() {
           error="Invalid email and/or password"
           visible={loginFailed}
         />
+        <Text style={styles.text}>Email</Text>
         <FormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="email"
           keyboardType="email-address"
           name="email"
-          placeholder="Email"
+          placeholder="masteruser@email.com"
           textContentType="emailAddress"
         />
+        <Text style={styles.text}>Password</Text>
         <FormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="lock"
           name="password"
-          placeholder="Password"
+          placeholder="Masteruser975"
           secureTextEntry
           textContentType="password"
         />
@@ -81,6 +85,12 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 20,
     width: 80,
+  },
+  text: {
+    color: colors.black,
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 5,
   },
 });
 
