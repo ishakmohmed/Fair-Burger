@@ -39,34 +39,32 @@ function AddFoodScreen() {
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Food</HeadingText>
-      <View style={styles.formContainer}>
-        <Form
-          initialValues={{
-            name: "",
-            price: "",
-            images: [],
-          }}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          <Text style={styles.text}>Food Name</Text>
-          <FormField
-            maxLength={255}
-            numberOfLines={1}
-            name="name"
-            placeholder="Food"
-          />
-          <Text style={styles.text}>Price</Text>
-          <FormField
-            keyboardType="numeric"
-            maxLength={6}
-            name="price"
-            placeholder="0"
-            width={120}
-          />
-          <SubmitButton title="Add Food" color="orange" />
-        </Form>
-      </View>
+      <Form
+        initialValues={{
+          name: "",
+          price: "",
+          images: [],
+        }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <Text style={styles.text}>Food Name</Text>
+        <FormField
+          maxLength={255}
+          numberOfLines={1}
+          name="name"
+          placeholder="Food"
+        />
+        <Text style={styles.text}>Price</Text>
+        <FormField
+          keyboardType="numeric"
+          maxLength={6}
+          name="price"
+          placeholder="0"
+          width={120}
+        />
+        <SubmitButton title="Add Food" color="orange" />
+      </Form>
     </Screen>
   );
 }
@@ -74,9 +72,6 @@ function AddFoodScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-  },
-  formContainer: {
-    backgroundColor: colors.white,
   },
   text: {
     color: colors.black,
