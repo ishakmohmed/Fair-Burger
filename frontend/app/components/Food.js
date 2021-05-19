@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
     borderRadius: 10,
     flexDirection: "row",
-    marginBottom: 20,
+    marginBottom: 10,
     overflow: "hidden",
     padding: 10,
     width: "100%",

@@ -10,14 +10,21 @@ import AuthContext from "../auth/context";
 
 function DeleteFoodScreen() {
   const { user } = useContext(AuthContext);
-  const { data, error, loading, request: loadFoods } = useApi(foodApi.getFoods);
+  const {
+    data: foodData,
+    loading: foodLoading,
+    request: loadFoods,
+  } = useApi(foodApi.getFoods);
+  const { loading: foodDeleteLoading, request: deleteFood } = useApi(
+    foodApi.deleteFood
+  );
 
   useEffect(() => {
     loadFoods();
   }, []);
 
   const handleDelete = async (id) => {
-    await foodApi.deleteFood(id);
+    await deleteFood(id);
     await loadFoods(user.id);
   };
 
@@ -33,12 +40,12 @@ function DeleteFoodScreen() {
           style={styles.reloadButton}
           name="reload-circle"
           size={50}
-          color="orange"
+          color="black"
         />
       </TouchableOpacity>
-      <ActivityIndicator visible={loading} />
+      <ActivityIndicator visible={foodLoading || foodDeleteLoading} />
       <FlatList
-        data={data}
+        data={foodData}
         keyExtractor={(food) => food._id.toString()}
         renderItem={({ item }) => (
           <Food
@@ -58,8 +65,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   reloadButton: {
-    margin: 10,
+    marginBottom: 15,
     marginLeft: "auto",
+    marginRight: "auto",
   },
 });
 

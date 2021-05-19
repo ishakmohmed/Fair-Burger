@@ -2,9 +2,9 @@ import asyncHandler from "express-async-handler";
 import Burger from "../models/burger.js";
 
 const addBurger = asyncHandler(async (req, res) => {
-  const { customerId, name, price } = req.body;
+  const { userId, name, price } = req.body;
 
-  if (!customerId || !name || !price) {
+  if (!userId || !name || !price) {
     res.status(400);
     throw new Error(
       "Bad request. Please make sure you enter name, price, and image(s) of burger."
@@ -12,7 +12,7 @@ const addBurger = asyncHandler(async (req, res) => {
   }
 
   const createdBurger = await Burger.create({
-    customerId,
+    userId,
     name,
     price,
   });
@@ -37,8 +37,8 @@ const deleteBurger = asyncHandler(async (req, res) => {
 });
 
 const getBurgers = asyncHandler(async (req, res) => {
-  const customerId = req.params.id;
-  const burgers = await Burger.find({ customerId });
+  const userId = req.params.id;
+  const burgers = await Burger.find({ userId });
 
   res.json(burgers);
 });

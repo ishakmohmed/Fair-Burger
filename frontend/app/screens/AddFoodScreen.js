@@ -19,7 +19,7 @@ function AddFoodScreen() {
 
   const handleSubmit = async (data, { resetForm }) => {
     try {
-      await foodApi.addFood({ ...data, customerId: user.id });
+      await foodApi.addFood({ ...data, userId: user.id });
     } catch (error) {
       return alert("Could not add food");
     }

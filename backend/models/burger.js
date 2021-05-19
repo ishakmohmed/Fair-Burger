@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const burgerSchema = mongoose.Schema(
   {
-    customerId: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
