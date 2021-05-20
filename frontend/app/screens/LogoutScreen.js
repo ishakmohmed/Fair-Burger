@@ -14,7 +14,7 @@ function LogoutScreen() {
       <View style={styles.container}>
         <HeadingText>Logout?</HeadingText>
         <DancingBurger />
-        <Button color="black" title="Logout!" onPress={() => setUser(null)} />
+        <Button color="green" title="Logout!" onPress={() => setUser(null)} />
       </View>
     </Screen>
   );

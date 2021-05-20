@@ -9,31 +9,23 @@ function FoodInOrderScreen({ foodName, foodPrice }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.foodName} numberOfLines={1}>
-        {foodName}
-      </Text>
-      <Text style={styles.foodPrice} numberOfLines={1}>
-        MYR {foodPrice}
-      </Text>
+      <View>
+        <Text style={styles.foodName} numberOfLines={1}>
+          {foodName}
+        </Text>
+        <Text style={styles.foodPrice} numberOfLines={1}>
+          MYR {foodPrice}
+        </Text>
+      </View>
       <View style={styles.quantityContainer}>
         <TouchableOpacity>
-          <AntDesign
-            name="pluscircleo"
-            size={30}
-            color="white"
-            style={styles.icon}
-          />
+          <AntDesign name="leftcircle" size={30} color="white" />
         </TouchableOpacity>
         <Text style={styles.quantity} numberOfLines={1}>
-          {qty}
+          qty: {qty}
         </Text>
         <TouchableOpacity>
-          <AntDesign
-            name="minuscircleo"
-            size={30}
-            color="white"
-            style={styles.icon}
-          />
+          <AntDesign name="rightcircle" size={30} color="white" />
         </TouchableOpacity>
       </View>
       <TouchableOpacity>
@@ -47,19 +39,19 @@ function FoodInOrderScreen({ foodName, foodPrice }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.pink,
-    borderRadius: 20,
-    marginTop: 10,
+    backgroundColor: colors.light,
+    borderRadius: 10,
     padding: 5,
   },
   container: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkBlue,
     borderRadius: 10,
+    justifyContent: "space-around",
     margin: 10,
     marginBottom: 0,
     padding: 10,
-    width: 160,
-    height: 160,
+    width: 180,
+    height: 180,
   },
   foodName: {
     color: colors.white,
@@ -74,12 +66,11 @@ const styles = StyleSheet.create({
   },
   text: {
     alignSelf: "center",
-    color: colors.white,
+    color: colors.black,
     fontWeight: "bold",
   },
   quantity: {
     color: colors.white,
-    fontSize: 20,
   },
   quantityContainer: {
     alignItems: "center",

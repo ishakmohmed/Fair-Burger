@@ -23,11 +23,12 @@ function WelcomeScreen({ navigation }) {
         <View style={styles.buttonContainer}>
           <Button
             title="Login"
+            color="green"
             onPress={() => navigation.navigate(routes.LOGIN)}
           />
           <Button
             title="Register"
-            color="purple"
+            color="darkGreen"
             onPress={() => navigation.navigate(routes.REGISTER)}
           />
         </View>

@@ -18,7 +18,7 @@ function Food({ foodId, foodName, foodPrice, onPress }) {
       <TouchableOpacity onPress={() => onPress(foodId)}>
         <Ionicons
           name="trash-outline"
-          size={30}
+          size={25}
           color="white"
           style={styles.icon}
         />
@@ -29,23 +29,25 @@ function Food({ foodId, foodName, foodPrice, onPress }) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkGreen,
     borderRadius: 10,
     flexDirection: "row",
     marginBottom: 10,
     overflow: "hidden",
-    padding: 10,
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
     width: "100%",
   },
   foodName: {
     color: colors.white,
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: "bold",
     margin: 5,
   },
   foodPrice: {
-    color: colors.white,
-    fontSize: 20,
+    color: colors.green,
+    fontSize: 16,
     margin: 5,
   },
   icon: {

@@ -50,12 +50,39 @@ function OrderScreen() {
         />
         <View>
           <ScrollView horizontal>
-            <FoodInOrderScreen foodName="some burger" foodPrice={44} />
-            <FoodInOrderScreen foodName="some burger" foodPrice={44} />
-            <FoodInOrderScreen foodName="some burger" foodPrice={44} />
+            <FoodInOrderScreen
+              foodName="some burger"
+              foodPrice={44}
+              name="orderItems"
+            />
+            <FoodInOrderScreen
+              foodName="some burger"
+              foodPrice={44}
+              name="orderItems"
+            />
+            <FoodInOrderScreen
+              foodName="some burger"
+              foodPrice={44}
+              name="orderItems"
+            />
+            <FoodInOrderScreen
+              foodName="some burger"
+              foodPrice={44}
+              name="orderItems"
+            />
+            <FoodInOrderScreen
+              foodName="some burger"
+              foodPrice={44}
+              name="orderItems"
+            />
+            <FoodInOrderScreen
+              foodName="some burger"
+              foodPrice={44}
+              name="orderItems"
+            />
           </ScrollView>
         </View>
-        <SubmitButton title="Add Order" color="purple" />
+        <SubmitButton title="Add Order" color="green" />
       </Form>
     </Screen>
   );

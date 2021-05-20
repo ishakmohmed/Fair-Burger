@@ -6,22 +6,28 @@ function ActivityIndicator({ visible = false }) {
   if (!visible) return null;
 
   return (
-    <View style={styles.overlay}>
-      <LottieView
-        autoPlay
-        loop
-        source={require("../assets/animations/loader.json")}
-      />
+    <View style={styles.container}>
+      <View style={styles.overlay}>
+        <LottieView
+          autoPlay
+          loop
+          source={require("../assets/animations/loader.json")}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    height: "100%",
+    width: "100%",
+  },
   overlay: {
     backgroundColor: "white",
-    height: "100%",
+    height: 200,
     opacity: 1,
-    width: "100%",
+    width: 200,
     zIndex: 1,
   },
 });

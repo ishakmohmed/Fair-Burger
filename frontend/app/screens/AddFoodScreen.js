@@ -63,7 +63,7 @@ function AddFoodScreen() {
           placeholder="0"
           width={120}
         />
-        <SubmitButton title="Add Food" color="orange" />
+        <SubmitButton title="Add Food" color="green" />
       </Form>
     </Screen>
   );

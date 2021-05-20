@@ -9,7 +9,7 @@ function TabBar({ navigation, state }) {
   const [selected, setSelected] = useState("queue");
   const { routes } = state;
   const renderColor = (currentTab) =>
-    currentTab === selected ? colors.pink : colors.white;
+    currentTab === selected ? colors.green : colors.white;
 
   const handlePress = (activeTab, index) => {
     if (state.index !== index) {
@@ -37,7 +37,7 @@ function TabBar({ navigation, state }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.darkBlue,
+    backgroundColor: colors.darkGreen,
     borderRadius: 25,
     elevation: 15,
     flexDirection: "row",
