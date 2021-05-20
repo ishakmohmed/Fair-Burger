@@ -4,7 +4,7 @@ import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import Food from "../components/Food";
 import foodApi from "../api/food";
-import ActivityIndicator from "../components/ActivityIndicator";
+import ActivityIndicator2 from "../components/ActivityIndicator2";
 import { Ionicons } from "@expo/vector-icons";
 import AuthContext from "../auth/context";
 
@@ -47,7 +47,7 @@ function DeleteFoodScreen() {
           color="black"
         />
       </TouchableOpacity>
-      <ActivityIndicator visible={foodLoading || foodDeleteLoading} />
+      <ActivityIndicator2 visible={foodLoading || foodDeleteLoading} />
       <FlatList
         data={foodData}
         keyExtractor={(food) => food._id.toString()}
@@ -67,6 +67,7 @@ function DeleteFoodScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    paddingBottom: 50,
   },
   reloadButton: {
     marginBottom: 15,
