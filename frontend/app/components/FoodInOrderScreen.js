@@ -4,9 +4,13 @@ import Text from "./Text";
 import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
 
-function FoodInOrderScreen({ foodName, foodPrice }) {
-  const [qty, setQty] = useState(1000); // maybe remove this
-
+function FoodInOrderScreen({
+  foodId,
+  foodName,
+  foodPrice,
+  onPressAddButton,
+  qty,
+}) {
   return (
     <View style={styles.container}>
       <View>
@@ -29,7 +33,10 @@ function FoodInOrderScreen({ foodName, foodPrice }) {
         </TouchableOpacity>
       </View>
       <TouchableOpacity>
-        <View style={styles.button}>
+        <View
+          style={styles.button}
+          onPress={() => onPressAddButton(foodId, foodPrice, qty)}
+        >
           <Text style={styles.text}>Add</Text>
         </View>
       </TouchableOpacity>
@@ -44,11 +51,10 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   container: {
-    backgroundColor: colors.darkBlue,
+    backgroundColor: colors.darkGreen,
     borderRadius: 10,
     justifyContent: "space-around",
     margin: 10,
-    marginBottom: 0,
     padding: 10,
     width: 180,
     height: 180,
@@ -58,7 +64,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   foodPrice: {
-    color: colors.pink,
+    color: colors.green,
     fontSize: 14,
   },
   icon: {

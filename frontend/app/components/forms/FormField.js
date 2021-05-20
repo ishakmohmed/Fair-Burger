@@ -20,6 +20,7 @@ function FormField({ name, width, ...otherProps }) {
         onChangeText={(text) => setFieldValue(name, text)}
         value={values[name]}
         width={width}
+        fontWeight="bold"
         {...otherProps}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />

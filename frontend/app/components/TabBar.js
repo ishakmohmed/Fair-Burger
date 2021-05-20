@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.darkGreen,
     borderRadius: 25,
-    elevation: 15,
     flexDirection: "row",
     height: 80,
     justifyContent: "space-between",

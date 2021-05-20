@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton } from "../components/forms";
@@ -12,31 +12,22 @@ import FoodInOrderScreen from "../components/FoodInOrderScreen";
 
 const validationSchema = Yup.object().shape({
   customer: Yup.string().required().min(1).label("Name"),
-  orderItems: Yup.array().min(1),
 });
 
 function OrderScreen() {
+  const [orderItems, setOrderItems] = useState([]);
   const { user } = useContext(AuthContext);
 
   const handleSubmit = () => {};
 
-  const handlePress = () => {};
+  const handlePressAddButton = () => {};
 
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Order</HeadingText>
-      <TouchableOpacity onPress={handlePress}>
-        <Ionicons
-          style={styles.resetButton}
-          name="close-circle"
-          size={50}
-          color="black"
-        />
-      </TouchableOpacity>
       <Form
         initialValues={{
           customer: "",
-          orderItems: [],
         }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
@@ -48,37 +39,22 @@ function OrderScreen() {
           name="name"
           placeholder="Name"
         />
+        <Text style={styles.text}>Order Items</Text>
         <View>
-          <ScrollView horizontal>
+          <ScrollView
+            horizontal
+            style={{
+              backgroundColor: colors.light,
+              padding: 5,
+              borderRadius: 10,
+            }}
+          >
             <FoodInOrderScreen
+              foodId="fakeId"
               foodName="some burger"
               foodPrice={44}
-              name="orderItems"
-            />
-            <FoodInOrderScreen
-              foodName="some burger"
-              foodPrice={44}
-              name="orderItems"
-            />
-            <FoodInOrderScreen
-              foodName="some burger"
-              foodPrice={44}
-              name="orderItems"
-            />
-            <FoodInOrderScreen
-              foodName="some burger"
-              foodPrice={44}
-              name="orderItems"
-            />
-            <FoodInOrderScreen
-              foodName="some burger"
-              foodPrice={44}
-              name="orderItems"
-            />
-            <FoodInOrderScreen
-              foodName="some burger"
-              foodPrice={44}
-              name="orderItems"
+              onPressAddButton={handlePressAddButton}
+              qty={2}
             />
           </ScrollView>
         </View>
@@ -91,11 +67,6 @@ function OrderScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-  },
-  resetButton: {
-    marginBottom: 15,
-    marginLeft: "auto",
-    marginRight: "auto",
   },
   scrollViewContainer: {
     flex: 1,
