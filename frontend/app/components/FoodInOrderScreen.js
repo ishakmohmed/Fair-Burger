@@ -4,13 +4,7 @@ import Text from "./Text";
 import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
 
-function FoodInOrderScreen({
-  foodId,
-  foodName,
-  foodPrice,
-  onPressAddButton,
-  qty,
-}) {
+function FoodInOrderScreen({ foodId, foodName, foodPrice, onPress, qty }) {
   return (
     <View style={styles.container}>
       <View>
@@ -35,7 +29,7 @@ function FoodInOrderScreen({
       <TouchableOpacity>
         <View
           style={styles.button}
-          onPress={() => onPressAddButton(foodId, foodPrice, qty)}
+          onPress={() => onPress(foodId, foodPrice, qty)}
         >
           <Text style={styles.text}>Add</Text>
         </View>

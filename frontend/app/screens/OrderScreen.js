@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton } from "../components/forms";
@@ -6,8 +6,10 @@ import Text from "../components/Text";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import colors from "../config/colors";
+import ActivityIndicator2 from "../components/ActivityIndicator2";
+import orderApi from "../api/order";
+import foodApi from "../api/food";
 import AuthContext from "../auth/context";
-import { Ionicons } from "@expo/vector-icons";
 import FoodInOrderScreen from "../components/FoodInOrderScreen";
 
 const validationSchema = Yup.object().shape({
@@ -17,6 +19,20 @@ const validationSchema = Yup.object().shape({
 function OrderScreen() {
   const [orderItems, setOrderItems] = useState([]);
   const { user } = useContext(AuthContext);
+  const {
+    data: addOrderData,
+    loading: addOrderLoading,
+    request: addOrderRequest,
+  } = useApi(orderApi.addOrder);
+  const {
+    data: foodData,
+    loading: foodLoading,
+    request: loadFoods,
+  } = useApi(foodApi.getFoods);
+
+  useEffect(() => {
+    loadFoodsInitially();
+  }, []);
 
   // {
   //     "userId": "60a69f22af1fb12724ad5293",
@@ -30,11 +46,19 @@ function OrderScreen() {
 
   const handleSubmit = () => {};
 
-  const handlePressAddButton = () => {};
+  const handlePressAddButton = (foodId, foodPrice, qty) => {
+    setOrderItems([...orderItems, { foodId, foodPrice, qty }]);
+    console.log("Now your order is >>>", orderItems);
+  };
+
+  const loadFoodsInitially = () => {
+    loadFoods(user.id);
+  };
 
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Order</HeadingText>
+      <ActivityIndicator2 visible={foodLoading || addOrderLoading} />
       <Form
         initialValues={{
           customer: "",
@@ -51,21 +75,17 @@ function OrderScreen() {
         />
         <Text style={styles.text}>Order Items</Text>
         <View>
-          <ScrollView
-            horizontal
-            style={{
-              backgroundColor: colors.light,
-              padding: 5,
-              borderRadius: 10,
-            }}
-          >
-            <FoodInOrderScreen
-              foodId="fakeId"
-              foodName="some burger"
-              foodPrice={44}
-              onPressAddButton={handlePressAddButton}
-              qty={2}
-            />
+          <ScrollView horizontal style={styles.scrollView}>
+            {foodData.map((food) => (
+              <FoodInOrderScreen
+                key={food._id}
+                foodId={food._id}
+                foodName={food.name}
+                foodPrice={food.price}
+                onPress={handlePressAddButton}
+                qty={0}
+              />
+            ))}
           </ScrollView>
         </View>
         <SubmitButton title="Add Order" color="green" />
@@ -80,6 +100,12 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flex: 1,
+  },
+  scrollView: {
+    backgroundColor: colors.light,
+    minHeight: 200,
+    padding: 5,
+    borderRadius: 10,
   },
   text: {
     color: colors.black,
