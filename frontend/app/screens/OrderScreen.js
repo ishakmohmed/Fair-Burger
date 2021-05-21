@@ -18,6 +18,20 @@ function OrderScreen() {
   const [orderItems, setOrderItems] = useState([]);
   const { user } = useContext(AuthContext);
 
+
+  // test out the API using this data >>>
+
+//   {
+//     "userId": "609dd8aa4f538c29c02bf456",
+//     "customer": "Mohmed Ishak",
+//     "orderItems": [ {
+//         "name": "60a528d84a379c3708d8cd37",
+//         "qty": 2,
+//         "price": 5
+//     }
+//     ]
+// }
+
   const handleSubmit = () => {};
 
   const handlePressAddButton = () => {};

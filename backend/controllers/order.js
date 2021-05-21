@@ -2,9 +2,9 @@ import asyncHandler from "express-async-handler";
 import Order from "../models/order.js";
 
 const addOrder = asyncHandler(async (req, res) => {
-  const { customerName, orderItems } = req.body;
+  const { userId, customer, orderItems } = req.body;
 
-  if (!customerName || !orderItems) {
+  if (!userId || !customer || !orderItems) {
     res.status(400);
     throw new Error(
       "Bad request. Please make sure you enter customer's name and his/hers order items."
@@ -12,8 +12,9 @@ const addOrder = asyncHandler(async (req, res) => {
   }
 
   const createdOrder = await Order.create({
-    customerName,
-    orderItems,
+    userId,
+    customer,
+    orderItems
   });
 
   if (createdOrder) res.status(201);
