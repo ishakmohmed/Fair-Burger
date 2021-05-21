@@ -14,10 +14,10 @@ const addOrder = asyncHandler(async (req, res) => {
   const createdOrder = await Order.create({
     userId,
     customer,
-    orderItems
+    orderItems,
   });
 
-  if (createdOrder) res.status(201);
+  if (createdOrder) res.status(201).json(createdOrder);
   else {
     res.status(400);
     throw new Error("Invalid order data.");

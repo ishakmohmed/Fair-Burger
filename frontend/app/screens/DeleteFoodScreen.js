@@ -2,11 +2,13 @@ import React, { useEffect, useContext } from "react";
 import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
+import Text from "../components/Text";
 import Food from "../components/Food";
 import foodApi from "../api/food";
 import ActivityIndicator2 from "../components/ActivityIndicator2";
 import { Ionicons } from "@expo/vector-icons";
 import AuthContext from "../auth/context";
+import colors from "../config/colors";
 
 function DeleteFoodScreen() {
   const { user } = useContext(AuthContext);
@@ -39,6 +41,7 @@ function DeleteFoodScreen() {
   return (
     <Screen style={styles.container}>
       <HeadingText>Delete Food</HeadingText>
+      <Text style={styles.text}>This is your menu</Text>
       <TouchableOpacity onPress={handlePress}>
         <Ionicons
           style={styles.reloadButton}
@@ -73,6 +76,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: "auto",
     marginRight: "auto",
+  },
+  text: {
+    alignSelf: "center",
+    borderColor: colors.green,
+    borderRadius: 20,
+    borderWidth: 2,
+    color: colors.green,
+    fontWeight: "bold",
+    margin: 10,
+    padding: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
 
