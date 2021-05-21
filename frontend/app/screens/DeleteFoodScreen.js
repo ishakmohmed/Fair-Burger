@@ -41,7 +41,7 @@ function DeleteFoodScreen() {
   return (
     <Screen style={styles.container}>
       <HeadingText>Delete Food</HeadingText>
-      <Text style={styles.text}>This is your menu</Text>
+      <Text style={styles.helpText}>This is your menu</Text>
       <TouchableOpacity onPress={handlePress}>
         <Ionicons
           style={styles.reloadButton}
@@ -72,12 +72,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 50,
   },
-  reloadButton: {
-    marginBottom: 15,
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  text: {
+  helpText: {
     alignSelf: "center",
     borderColor: colors.green,
     borderRadius: 20,
@@ -88,6 +83,11 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 20,
     paddingRight: 20,
+  },
+  reloadButton: {
+    marginBottom: 15,
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
 

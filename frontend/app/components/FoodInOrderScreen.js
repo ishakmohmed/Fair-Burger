@@ -5,6 +5,8 @@ import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
 
 function FoodInOrderScreen({ foodId, foodName, foodPrice, onPress, qty }) {
+  const [changeableQuantity, setChangeableQuantity] = useState(qty);
+
   return (
     <View style={styles.container}>
       <View>
@@ -17,20 +19,35 @@ function FoodInOrderScreen({ foodId, foodName, foodPrice, onPress, qty }) {
       </View>
       <View style={styles.quantityContainer}>
         <TouchableOpacity>
-          <AntDesign name="leftcircle" size={30} color="white" />
+          <AntDesign
+            name="leftcircle"
+            size={30}
+            color="white"
+            onPress={() => {
+              if (changeableQuantity > 0)
+                setChangeableQuantity(changeableQuantity - 1);
+            }}
+          />
         </TouchableOpacity>
         <Text style={styles.quantity} numberOfLines={1}>
-          qty: {qty}
+          qty: {changeableQuantity}
         </Text>
         <TouchableOpacity>
-          <AntDesign name="rightcircle" size={30} color="white" />
+          <AntDesign
+            name="rightcircle"
+            size={30}
+            color="white"
+            onPress={() => {
+              setChangeableQuantity(changeableQuantity + 1);
+            }}
+          />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity>
-        <View
-          style={styles.button}
-          onPress={() => onPress(foodId, foodPrice, qty)}
-        >
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => onPress(foodId, foodPrice, changeableQuantity)}
+      >
+        <View>
           <Text style={styles.text}>Add</Text>
         </View>
       </TouchableOpacity>

@@ -58,6 +58,7 @@ function OrderScreen() {
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Order</HeadingText>
+      <Text style={styles.helpText}>Showing items from your menu</Text>
       <ActivityIndicator2 visible={foodLoading || addOrderLoading} />
       <Form
         initialValues={{
@@ -98,11 +99,24 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
+  helpText: {
+    alignSelf: "center",
+    borderColor: colors.green,
+    borderRadius: 20,
+    borderWidth: 2,
+    color: colors.green,
+    fontWeight: "bold",
+    margin: 10,
+    padding: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
   scrollViewContainer: {
     flex: 1,
   },
   scrollView: {
     backgroundColor: colors.light,
+    marginVertical: 10,
     minHeight: 200,
     padding: 5,
     borderRadius: 10,
