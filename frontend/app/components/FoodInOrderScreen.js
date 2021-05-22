@@ -11,9 +11,8 @@ function FoodInOrderScreen({
   foodName,
   foodPrice,
   onPress,
-  qty,
 }) {
-  const [changeableQuantity, setChangeableQuantity] = useState(qty);
+  const [changeableQuantity, setChangeableQuantity] = useState(0);
   const [visible, setVisible] = useState(addButtonVisible);
 
   const handlePressAddButton = () => {
@@ -60,17 +59,19 @@ function FoodInOrderScreen({
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              onPress(foodId, foodPrice, changeableQuantity);
-              handlePressAddButton();
-            }}
-          >
-            <View>
-              <Text style={styles.text}>Add</Text>
-            </View>
-          </TouchableOpacity>
+          {changeableQuantity > 0 && (
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                onPress(foodId, foodPrice, changeableQuantity);
+                handlePressAddButton();
+              }}
+            >
+              <View>
+                <Text style={styles.text}>Add</Text>
+              </View>
+            </TouchableOpacity>
+          )}
         </>
       )}
 

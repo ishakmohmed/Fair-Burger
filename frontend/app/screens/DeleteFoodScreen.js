@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: "bold",
     padding: 5,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   helpTextAndReloadButton: {
     display: "flex",

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton } from "../components/forms";
@@ -53,8 +53,19 @@ function OrderScreen() {
     await loadFoods(user.id);
   };
 
+  const handlePressCrossButton = async () => {
+    setOrderItems([]);
+    console.log("WELL Now your order is >>>", orderItems);
+  };
+
   const handlePressAddButton = (foodId, foodPrice, qty) => {
-    setOrderItems([...orderItems, { foodId, foodPrice, qty }]);
+    const newOrder = {
+      foodId,
+      foodPrice,
+      qty,
+    };
+
+    setOrderItems([...orderItems, newOrder]);
     console.log("Now your order is >>>", orderItems);
   };
 
@@ -66,7 +77,10 @@ function OrderScreen() {
     <Screen style={styles.container}>
       <HeadingText>Add Order</HeadingText>
       <View style={styles.helpTextAndReloadButton}>
-        <Text style={styles.helpText}>Items from menu</Text>
+        <Text style={styles.helpText}>Items from your menu</Text>
+        <TouchableOpacity onPress={handlePressCrossButton}>
+          <Ionicons name="md-close-circle" size={50} color="black" />
+        </TouchableOpacity>
         <TouchableOpacity onPress={handlePressReloadButton}>
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
@@ -97,7 +111,6 @@ function OrderScreen() {
                 foodName={food.name}
                 foodPrice={food.price}
                 onPress={handlePressAddButton}
-                qty={0}
               />
             ))}
           </ScrollView>
@@ -119,8 +132,8 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: "bold",
     padding: 5,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   helpTextAndReloadButton: {
     flexDirection: "row",
