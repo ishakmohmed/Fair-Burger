@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import Text from "../components/Text";
@@ -41,15 +41,12 @@ function DeleteFoodScreen() {
   return (
     <Screen style={styles.container}>
       <HeadingText>Delete Food</HeadingText>
-      <Text style={styles.helpText}>This is your menu</Text>
-      <TouchableOpacity onPress={handlePress}>
-        <Ionicons
-          style={styles.reloadButton}
-          name="reload-circle"
-          size={50}
-          color="black"
-        />
-      </TouchableOpacity>
+      <View style={styles.helpTextAndReloadButton}>
+        <Text style={styles.helpText}>This is your menu</Text>
+        <TouchableOpacity onPress={handlePress}>
+          <Ionicons name="reload-circle" size={50} color="black" />
+        </TouchableOpacity>
+      </View>
       <ActivityIndicator2 visible={foodLoading || foodDeleteLoading} />
       <FlatList
         data={foodData}
@@ -74,20 +71,19 @@ const styles = StyleSheet.create({
   },
   helpText: {
     alignSelf: "center",
-    borderColor: colors.green,
+    backgroundColor: colors.black,
     borderRadius: 20,
-    borderWidth: 2,
-    color: colors.green,
+    color: colors.white,
     fontWeight: "bold",
-    margin: 10,
     padding: 5,
     paddingLeft: 20,
     paddingRight: 20,
   },
-  reloadButton: {
-    marginBottom: 15,
-    marginLeft: "auto",
-    marginRight: "auto",
+  helpTextAndReloadButton: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 15,
   },
 });
 

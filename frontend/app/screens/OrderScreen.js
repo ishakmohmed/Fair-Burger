@@ -11,6 +11,7 @@ import orderApi from "../api/order";
 import foodApi from "../api/food";
 import AuthContext from "../auth/context";
 import FoodInOrderScreen from "../components/FoodInOrderScreen";
+import { Ionicons } from "@expo/vector-icons";
 
 const validationSchema = Yup.object().shape({
   customer: Yup.string().required().min(1).label("Name"),
@@ -44,21 +45,32 @@ function OrderScreen() {
   //         }]
   // }
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (data, { resetForm }) => {
+    resetForm();
+  };
+
+  const handlePressReloadButton = async () => {
+    await loadFoods(user.id);
+  };
 
   const handlePressAddButton = (foodId, foodPrice, qty) => {
     setOrderItems([...orderItems, { foodId, foodPrice, qty }]);
     console.log("Now your order is >>>", orderItems);
   };
 
-  const loadFoodsInitially = () => {
-    loadFoods(user.id);
+  const loadFoodsInitially = async () => {
+    await loadFoods(user.id);
   };
 
   return (
     <Screen style={styles.container}>
       <HeadingText>Add Order</HeadingText>
-      <Text style={styles.helpText}>Showing items from your menu</Text>
+      <View style={styles.helpTextAndReloadButton}>
+        <Text style={styles.helpText}>Items from menu</Text>
+        <TouchableOpacity onPress={handlePressReloadButton}>
+          <Ionicons name="reload-circle" size={50} color="black" />
+        </TouchableOpacity>
+      </View>
       <ActivityIndicator2 visible={foodLoading || addOrderLoading} />
       <Form
         initialValues={{
@@ -71,7 +83,7 @@ function OrderScreen() {
         <FormField
           maxLength={255}
           numberOfLines={1}
-          name="name"
+          name="customer"
           placeholder="Name"
         />
         <Text style={styles.text}>Order Items</Text>
@@ -79,6 +91,7 @@ function OrderScreen() {
           <ScrollView horizontal style={styles.scrollView}>
             {foodData.map((food) => (
               <FoodInOrderScreen
+                addButtonVisible={true}
                 key={food._id}
                 foodId={food._id}
                 foodName={food.name}
@@ -101,24 +114,24 @@ const styles = StyleSheet.create({
   },
   helpText: {
     alignSelf: "center",
-    borderColor: colors.green,
+    backgroundColor: colors.black,
     borderRadius: 20,
-    borderWidth: 2,
-    color: colors.green,
+    color: colors.white,
     fontWeight: "bold",
-    margin: 10,
     padding: 5,
     paddingLeft: 20,
     paddingRight: 20,
   },
-  scrollViewContainer: {
-    flex: 1,
+  helpTextAndReloadButton: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 15,
   },
   scrollView: {
     backgroundColor: colors.light,
-    marginVertical: 10,
+    marginVertical: 5,
+    height: 200,
     minHeight: 200,
-    padding: 5,
     borderRadius: 10,
   },
   text: {

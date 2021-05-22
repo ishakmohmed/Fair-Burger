@@ -3,9 +3,22 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Text from "./Text";
 import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function FoodInOrderScreen({ foodId, foodName, foodPrice, onPress, qty }) {
+function FoodInOrderScreen({
+  addButtonVisible,
+  foodId,
+  foodName,
+  foodPrice,
+  onPress,
+  qty,
+}) {
   const [changeableQuantity, setChangeableQuantity] = useState(qty);
+  const [visible, setVisible] = useState(addButtonVisible);
+
+  const handlePressAddButton = () => {
+    setVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -17,47 +30,75 @@ function FoodInOrderScreen({ foodId, foodName, foodPrice, onPress, qty }) {
           MYR {foodPrice}
         </Text>
       </View>
-      <View style={styles.quantityContainer}>
-        <TouchableOpacity>
-          <AntDesign
-            name="leftcircle"
+
+      {visible && (
+        <>
+          <View style={styles.quantityContainer}>
+            <TouchableOpacity>
+              <AntDesign
+                name="leftcircle"
+                size={30}
+                color="white"
+                onPress={() => {
+                  if (changeableQuantity > 0)
+                    setChangeableQuantity(changeableQuantity - 1);
+                }}
+              />
+            </TouchableOpacity>
+            <Text style={styles.quantity} numberOfLines={1}>
+              qty: {changeableQuantity}
+            </Text>
+            <TouchableOpacity>
+              <AntDesign
+                name="rightcircle"
+                size={30}
+                color="white"
+                onPress={() => {
+                  setChangeableQuantity(changeableQuantity + 1);
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              onPress(foodId, foodPrice, changeableQuantity);
+              handlePressAddButton();
+            }}
+          >
+            <View>
+              <Text style={styles.text}>Add</Text>
+            </View>
+          </TouchableOpacity>
+        </>
+      )}
+
+      {!visible && (
+        <View style={styles.addedItemView}>
+          <Text style={styles.addedText}>Added</Text>
+          <MaterialCommunityIcons
+            name="check-outline"
             size={30}
             color="white"
-            onPress={() => {
-              if (changeableQuantity > 0)
-                setChangeableQuantity(changeableQuantity - 1);
-            }}
           />
-        </TouchableOpacity>
-        <Text style={styles.quantity} numberOfLines={1}>
-          qty: {changeableQuantity}
-        </Text>
-        <TouchableOpacity>
-          <AntDesign
-            name="rightcircle"
-            size={30}
-            color="white"
-            onPress={() => {
-              setChangeableQuantity(changeableQuantity + 1);
-            }}
-          />
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => onPress(foodId, foodPrice, changeableQuantity)}
-      >
-        <View>
-          <Text style={styles.text}>Add</Text>
         </View>
-      </TouchableOpacity>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  addedItemView: {
+    justifyContent: "space-around",
+    flexDirection: "row",
+  },
+  addedText: {
+    color: colors.white,
+    fontWeight: "bold",
+  },
   button: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.white,
     borderRadius: 10,
     padding: 5,
   },

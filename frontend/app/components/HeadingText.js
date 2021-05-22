@@ -9,10 +9,10 @@ function HeadingText({ children }) {
 const styles = StyleSheet.create({
   text: {
     color: colors.black,
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: "bold",
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-    margin: 20,
+    margin: 10,
     textAlign: "center",
   },
 });
