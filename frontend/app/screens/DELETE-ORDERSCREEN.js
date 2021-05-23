@@ -71,7 +71,7 @@ function OrderScreen() {
 
   const loadFoodsInitially = async () => {
     await loadFoods(user.id);
-  };
+  };  
 
   return (
     <Screen style={styles.container}>
