@@ -11,6 +11,7 @@ import orderApi from "../api/order";
 import foodApi from "../api/food";
 import AuthContext from "../auth/context";
 import FoodInOrderScreen from "../components/FoodInOrderScreen";
+import useApi from "../hooks/useApi";
 import { Ionicons } from "@expo/vector-icons";
 
 const validationSchema = Yup.object().shape({
@@ -71,7 +72,7 @@ function OrderScreen() {
 
   const loadFoodsInitially = async () => {
     await loadFoods(user.id);
-  };  
+  };
 
   return (
     <Screen style={styles.container}>

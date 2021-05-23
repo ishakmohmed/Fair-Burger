@@ -63,7 +63,7 @@ function FoodInOrderScreen({
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                onPress(foodId, foodPrice, changeableQuantity);
+                onPress(foodId, changeableQuantity, foodPrice);
                 handlePressAddButton();
               }}
             >

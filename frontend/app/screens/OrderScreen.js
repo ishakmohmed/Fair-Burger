@@ -12,29 +12,13 @@ import foodApi from "../api/food";
 import AuthContext from "../auth/context";
 import FoodInOrderScreen from "../components/FoodInOrderScreen";
 import { Ionicons } from "@expo/vector-icons";
+import useApi from "../hooks/useApi";
 
 const validationSchema = Yup.object().shape({
   customer: Yup.string().required().min(1).label("Name"),
 });
 
 function OrderScreen() {
-  const [orderItems, setOrderItems] = useState([]);
-  const { user } = useContext(AuthContext);
-  const {
-    data: addOrderData,
-    loading: addOrderLoading,
-    request: addOrderRequest,
-  } = useApi(orderApi.addOrder);
-  const {
-    data: foodData,
-    loading: foodLoading,
-    request: loadFoods,
-  } = useApi(foodApi.getFoods);
-
-  useEffect(() => {
-    loadFoodsInitially();
-  }, []);
-
   // {
   //     "userId": "60a69f22af1fb12724ad5293",
   //     "customer": "bismillah",
@@ -45,32 +29,43 @@ function OrderScreen() {
   //         }]
   // }
 
-  const handleSubmit = async (data, { resetForm }) => {
-    resetForm();
+  // const {
+  //   data: foodData,
+  //   loading: foodLoading,
+  //   request: foodRequest,
+  // } = useApi(foodApi.getFoods);
+
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    loadFoods();
+  }, []);
+
+  let orderItems = [];
+
+  const loadFoods = async () => {
+    await foodRequest(user.id);
   };
 
-  const handlePressReloadButton = async () => {
+  const handleSubmit = async () => {
+    orderItems = [];
     await loadFoods(user.id);
   };
 
-  const handlePressCrossButton = async () => {
-    setOrderItems([]);
-    console.log("WELL Now your order is >>>", orderItems);
-  };
+  const handlePressCrossButton = () => {};
 
-  const handlePressAddButton = (foodId, foodPrice, qty) => {
+  const handlePressReloadButton = () => {};
+
+  const handlePressAddButton = (foodId, quantity, price) => {
     const newOrder = {
-      foodId,
-      foodPrice,
-      qty,
+      name: foodId,
+      quantity,
+      price,
     };
 
-    setOrderItems([...orderItems, newOrder]);
-    console.log("Now your order is >>>", orderItems);
-  };
+    orderItems.push(newOrder);
 
-  const loadFoodsInitially = async () => {
-    await loadFoods(user.id);
+    console.log("NOW THE ORDER ITEMS >>>>>", orderItems);
   };
 
   return (
@@ -85,7 +80,7 @@ function OrderScreen() {
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      <ActivityIndicator2 visible={foodLoading || addOrderLoading} />
+      {/* <ActivityIndicator2 visible={foodLoading || somethingElseLoading} /> */}
       <Form
         initialValues={{
           customer: "",
@@ -103,7 +98,7 @@ function OrderScreen() {
         <Text style={styles.text}>Order Items</Text>
         <View>
           <ScrollView horizontal style={styles.scrollView}>
-            {foodData.map((food) => (
+            {/* {foodData.map((food) => (
               <FoodInOrderScreen
                 addButtonVisible={true}
                 key={food._id}
@@ -112,7 +107,7 @@ function OrderScreen() {
                 foodPrice={food.price}
                 onPress={handlePressAddButton}
               />
-            ))}
+            ))} */}
           </ScrollView>
         </View>
         <SubmitButton title="Add Order" color="green" />
