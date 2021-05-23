@@ -17,7 +17,7 @@ const addBurger = asyncHandler(async (req, res) => {
     price,
   });
 
-  if (createdBurger) res.status(201).json({ createdBurger });
+  if (createdBurger) res.status(201).json(createdBurger);
   else {
     res.status(400);
     throw new Error("Invalid burger data.");

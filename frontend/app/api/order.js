@@ -1,7 +1,7 @@
 import client from "./client";
 
-const addOrder = (data) => {
-  client.post("/api/orders", data);
+const addOrder = async (data) => {
+  await client.post("/api/orders", data);
 };
 
 export default {

@@ -19,23 +19,9 @@ const validationSchema = Yup.object().shape({
 });
 
 function OrderScreen() {
-  // {
-  //     "userId": "60a69f22af1fb12724ad5293",
-  //     "customer": "bismillah",
-  //     "orderItems": [{
-  //         "name": "60a69f22af1fb12724ad5293",
-  //         "qty": 5,
-  //         "price": 19
-  //         }]
-  // }
-
-  // const {
-  //   data: foodData,
-  //   loading: foodLoading,
-  //   request: foodRequest,
-  // } = useApi(foodApi.getFoods);
-
   const { user } = useContext(AuthContext);
+  const [foods, setFoods] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadFoods();
@@ -44,12 +30,23 @@ function OrderScreen() {
   let orderItems = [];
 
   const loadFoods = async () => {
-    await foodRequest(user.id);
+    setLoading(true);
+    const { data } = await foodApi.getFoods(user.id);
+    setLoading(false);
+    setFoods(data);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async ({ customer }, { resetForm }) => {
+    const orderData = {
+      userId: user.id,
+      customer,
+      orderItems: orderItems,
+    };
+
+    await orderApi.addOrder(orderData);
+
     orderItems = [];
-    await loadFoods(user.id);
+    resetForm();
   };
 
   const handlePressCrossButton = () => {};
@@ -64,8 +61,6 @@ function OrderScreen() {
     };
 
     orderItems.push(newOrder);
-
-    console.log("NOW THE ORDER ITEMS >>>>>", orderItems);
   };
 
   return (
@@ -80,7 +75,7 @@ function OrderScreen() {
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      {/* <ActivityIndicator2 visible={foodLoading || somethingElseLoading} /> */}
+      <ActivityIndicator2 visible={loading} />
       <Form
         initialValues={{
           customer: "",
@@ -98,7 +93,7 @@ function OrderScreen() {
         <Text style={styles.text}>Order Items</Text>
         <View>
           <ScrollView horizontal style={styles.scrollView}>
-            {/* {foodData.map((food) => (
+            {foods.map((food) => (
               <FoodInOrderScreen
                 addButtonVisible={true}
                 key={food._id}
@@ -107,7 +102,7 @@ function OrderScreen() {
                 foodPrice={food.price}
                 onPress={handlePressAddButton}
               />
-            ))} */}
+            ))}
           </ScrollView>
         </View>
         <SubmitButton title="Add Order" color="green" />
