@@ -40,6 +40,11 @@ const getBurgers = asyncHandler(async (req, res) => {
   const userId = req.params.id;
   const burgers = await Burger.find({ userId });
 
+  if (!burgers) {
+    res.status(404);
+    throw new Error("No burger found.");
+  }
+
   res.json(burgers);
 });
 

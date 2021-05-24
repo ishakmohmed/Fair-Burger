@@ -36,10 +36,10 @@ function OrderScreen() {
     setFoods(data);
   };
 
-  const handleSubmit = async ({ customer }, { resetForm }) => {
+  const handleSubmit = async (data, { resetForm }) => {
     const orderData = {
       userId: user.id,
-      customer,
+      customer: data.customer,
       orderItems: orderItems,
     };
 
