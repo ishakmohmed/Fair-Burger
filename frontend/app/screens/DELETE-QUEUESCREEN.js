@@ -12,19 +12,41 @@ import QueueCard from "../components/QueueCard";
 
 function QueueScreen() {
   const { user } = useContext(AuthContext);
+  const {
+    data: orderData,
+    loading: orderLoading,
+    request: loadOrders,
+  } = useApi(orderApi.getOrders);
+
+  useEffect(() => {
+    loadOrdersInitially();
+  }, []);
+
+  const handleDelete = async (id) => {
+    // await deleteOrder(id); // needa implement this
+    await loadOrders(user.id);
+  };
+
+  const handlePress = async () => {
+    await loadOrders(user.id);
+  };
+
+  const loadOrdersInitially = async () => {
+    await loadOrders(user.id);
+  };
 
   return (
     <Screen style={styles.container}>
       <HeadingText>Currently Waiting</HeadingText>
       <View style={styles.helpTextAndReloadButton}>
         <Text style={styles.helpText}>Next in queue:</Text>
-        <TouchableOpacity onPress={handlePressReloadButton}>
+        <TouchableOpacity onPress={handlePress}>
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      {/* <ActivityIndicator2 visible={false} />  fix the prop    */}
+      <ActivityIndicator2 visible={orderLoading} />
       <FlatList
-        data={orders}
+        data={orderData}
         keyExtractor={(order) => order._id.toString()}
         renderItem={({ item }) => (
           <QueueCard
