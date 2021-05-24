@@ -28,12 +28,14 @@ const getOrders = asyncHandler(async (req, res) => {
   const userId = req.params.id;
   const orders = await Order.find({ userId });
 
+  console.log("the orders are ", orders);
+
   if (!orders) {
     res.status(404);
     throw new Error("No order found.");
   }
 
-  res.json(orders);
+  res.json({ orders });
 });
 
 export { addOrder, getOrders };

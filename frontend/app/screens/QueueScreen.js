@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
@@ -6,7 +6,9 @@ import Text from "../components/Text";
 import AuthContext from "../auth/context";
 import { Ionicons } from "@expo/vector-icons";
 import orderApi from "../api/order";
+import ActivityIndicator2 from "../components/ActivityIndicator2";
 import colors from "../config/colors";
+import QueueCard from "../components/QueueCard";
 
 function QueueScreen() {
   const { user } = useContext(AuthContext);
@@ -25,7 +27,9 @@ function QueueScreen() {
     await loadOrders(user.id);
   };
 
-  const handlePress = () => {};
+  const handlePress = async () => {
+    await loadOrders(user.id);
+  };
 
   const loadOrdersInitially = async () => {
     await loadOrders(user.id);
@@ -40,6 +44,19 @@ function QueueScreen() {
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
+      <ActivityIndicator2 visible={orderLoading} />
+      <FlatList
+        data={orderData}
+        keyExtractor={(order) => order._id.toString()}
+        renderItem={({ item }) => (
+          <QueueCard
+            customer={item.customer}
+            onPress={handleDelete}
+            orderId={item._id}
+            orderItems={item.orderItems}
+          />
+        )}
+      />
     </Screen>
   );
 }
