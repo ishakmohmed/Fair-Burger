@@ -33,7 +33,7 @@ const getOrders = asyncHandler(async (req, res) => {
     throw new Error("No order found.");
   }
 
-  res.json({ data: orders });
+  res.json(orders);
 });
 
 export { addOrder, getOrders };
