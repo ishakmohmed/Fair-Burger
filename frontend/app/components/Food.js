@@ -12,7 +12,7 @@ function Food({ foodId, foodName, foodPrice, onPress }) {
           {foodName}
         </Text>
         <Text style={styles.foodPrice} numberOfLines={1}>
-          PRICE: MYR {foodPrice}
+          MYR {foodPrice}
         </Text>
       </View>
       <TouchableOpacity onPress={() => onPress(foodId)}>

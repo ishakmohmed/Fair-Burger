@@ -68,11 +68,11 @@ function QueueScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    paddingBottom: 50,
+    paddingBottom: 60,
   },
   helpText: {
     alignSelf: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.green,
     borderRadius: 20,
     color: colors.white,
     fontWeight: "bold",

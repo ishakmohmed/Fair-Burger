@@ -2,6 +2,7 @@ import React from "react";
 import { Image, ImageBackground, StyleSheet, View, Text } from "react-native";
 import Button from "../components/Button";
 import routes from "../navigation/routes";
+import colors from "../config/colors";
 
 function WelcomeScreen({ navigation }) {
   return (
@@ -13,11 +14,15 @@ function WelcomeScreen({ navigation }) {
       <ImageBackground
         blurRadius={2}
         style={styles.background}
-        source={require("../assets/icon.png")}
+        source={require("../assets/whiteBackground.png")}
       >
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require("../assets/icon.png")} />
-          <Text style={styles.tagline}>CHANGE THIS PAGE'S CODES!</Text>
+        </View>
+
+        <View style={styles.midContainer}>
+          <Text style={styles.tagline}>Fair Burger</Text>
+          <Text style={styles.subTagline}>"fair burger for everyone".</Text>
         </View>
 
         <View style={styles.buttonContainer}>
@@ -48,6 +53,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   logo: {
+    borderRadius: 50,
     width: 100,
     height: 100,
   },
@@ -56,8 +62,16 @@ const styles = StyleSheet.create({
     top: 70,
     alignItems: "center",
   },
-  tagline: {
+  midContainer: {
+    marginVertical: "50%",
+  },
+  subTagline: {
     fontSize: 25,
+    fontStyle: "italic",
+    color: colors.medium,
+  },
+  tagline: {
+    fontSize: 50,
     fontWeight: "bold",
     paddingVertical: 20,
   },

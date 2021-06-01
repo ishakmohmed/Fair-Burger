@@ -35,8 +35,6 @@ function LoginScreen() {
 
   return (
     <Screen style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/icon.png")} />
-
       <Form
         initialValues={{
           email: "",

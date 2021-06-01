@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   helpText: {
     alignSelf: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.green,
     borderRadius: 20,
     color: colors.white,
     fontWeight: "bold",
