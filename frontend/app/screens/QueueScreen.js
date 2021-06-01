@@ -12,46 +12,45 @@ import QueueCard from "../components/QueueCard";
 
 function QueueScreen() {
   const { user } = useContext(AuthContext);
-  const [orderData, setOrderData] = useState([]);
 
-  // useEffect(() => {
-  //   loadOrdersInitially();
-  // }, []);
+  const {
+    data: orderData,
+    loading: orderLoading,
+    request: loadOrders,
+  } = useApi(orderApi.getOrders);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await orderApi.getOrders(user.id);
-
-      console.log("listen the data is", data);
-
-      setOrderData(data);
-    })();
+    loadOrdersInitially();
   }, []);
 
-  const handlePress = {};
+  const handlePressReloadButton = async () => {
+    await loadOrders(user.id);
+  };
+
+  const loadOrdersInitially = async () => {
+    await loadOrders(user.id);
+  };
+
+  console.log("the data is >>>>>>>>>>>", orderData);
 
   return (
     <Screen style={styles.container}>
       <HeadingText>Currently Waiting</HeadingText>
       <View style={styles.helpTextAndReloadButton}>
         <Text style={styles.helpText}>Next in queue:</Text>
-        <TouchableOpacity onPress={handlePress}>
+        <TouchableOpacity onPress={handlePressReloadButton}>
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      {/* <ActivityIndicator2 visible={orderLoading} /> */}
-      {/* <FlatList
-        data={orderData}
-        keyExtractor={(order) => order._id.toString()}
-        renderItem={({ item }) => (
-          <QueueCard
-            customer={item.customer}
-            onPress={handleDelete}
-            orderId={item._id}
-            orderItems={item.orderItems}
-          />
-        )}
-      /> */}
+      <ActivityIndicator2 visible={orderLoading} />
+
+      {orderData && (
+        <FlatList
+          data={orderData}
+          keyExtractor={(order) => order._id.toString()}
+          renderItem={({ item }) => <QueueCard data={item} />}
+        />
+      )}
     </Screen>
   );
 }
@@ -59,8 +58,7 @@ function QueueScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingBottom: 50,
   },
   helpText: {
     alignSelf: "center",

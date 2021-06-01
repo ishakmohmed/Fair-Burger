@@ -3,13 +3,18 @@ import { View, StyleSheet } from "react-native";
 import Text from "./Text";
 import colors from "../config/colors";
 
-function QueueCard(customer, onPress, orderId, orderItems) {
+function QueueCard({ data }) {
+  const { customer } = data;
+
   return (
     <View style={styles.card}>
       <View style={styles.leftContainer}>
         <Text style={styles.customerName}>{customer}</Text>
+        
       </View>
-      <View style={styles.rightContainer}></View>
+      <View style={styles.rightContainer}>
+
+      </View>
     </View>
   );
 }
@@ -20,6 +25,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: "row",
     marginBottom: 10,
+    minHeight: 100,
     overflow: "hidden",
     padding: 5,
     paddingLeft: 10,
