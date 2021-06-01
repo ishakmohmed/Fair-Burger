@@ -1,26 +1,52 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Text from "./Text";
 import colors from "../config/colors";
+import { Ionicons } from "@expo/vector-icons";
 
-function QueueCard({ data }) {
-  const { customer } = data;
+function QueueCard({ data, onPress }) {
+  const { customer, _id, orderItems } = data;
+
+  const cardData = orderItems.map((item) => `(qty: ${item.qty}) ${item.name}`);
+
+  const arrayOfFoodsWithQuantities = [];
+
+  for (let item of orderItems) {
+    arrayOfFoodsWithQuantities.push(item.price * item.qty);
+  }
+
+  const total = arrayOfFoodsWithQuantities.reduce((accumulator, value) => {
+    return accumulator + value;
+  });
 
   return (
     <View style={styles.card}>
       <View style={styles.leftContainer}>
-        <Text style={styles.customerName}>{customer}</Text>
-        
+        <Text style={styles.customerName} numberOfLines={1}>
+          {customer}
+        </Text>
+        {cardData.map((data, index) => (
+          <Text style={styles.orderText} key={index} numberOfLines={1}>
+            {data}
+          </Text>
+        ))}
+        <Text style={styles.totalPrice}>TOTAL: RM {total}</Text>
       </View>
-      <View style={styles.rightContainer}>
-
-      </View>
+      <TouchableOpacity onPress={() => onPress(_id)}>
+        <Ionicons
+          name="trash-outline"
+          size={25}
+          color="white"
+          style={styles.icon}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
+    alignItems: "center",
     backgroundColor: colors.darkGreen,
     borderRadius: 10,
     flexDirection: "row",
@@ -38,8 +64,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     margin: 5,
   },
-  leftContainer: {},
-  rightContainer: {},
+  icon: {
+    margin: 20,
+  },
+  leftContainer: {
+    flex: 1,
+  },
+  orderText: {
+    color: colors.white,
+    fontSize: 16,
+    margin: 5,
+  },
+  totalPrice: {
+    color: colors.green,
+    fontSize: 16,
+    margin: 5,
+  },
 });
 
 export default QueueCard;

@@ -18,12 +18,20 @@ function QueueScreen() {
     loading: orderLoading,
     request: loadOrders,
   } = useApi(orderApi.getOrders);
+  const { loading: orderDeleteLoading, request: deleteOrder } = useApi(
+    orderApi.deleteOrder
+  );
 
   useEffect(() => {
     loadOrdersInitially();
   }, []);
 
   const handlePressReloadButton = async () => {
+    await loadOrders(user.id);
+  };
+
+  const handlePressDeleteButton = async (id) => {
+    await deleteOrder(id);
     await loadOrders(user.id);
   };
 
@@ -42,13 +50,15 @@ function QueueScreen() {
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      <ActivityIndicator2 visible={orderLoading} />
+      <ActivityIndicator2 visible={orderLoading || orderDeleteLoading} />
 
       {orderData && (
         <FlatList
           data={orderData}
           keyExtractor={(order) => order._id.toString()}
-          renderItem={({ item }) => <QueueCard data={item} />}
+          renderItem={({ item }) => (
+            <QueueCard data={item} onPress={handlePressDeleteButton} />
+          )}
         />
       )}
     </Screen>

@@ -12,7 +12,7 @@ function Food({ foodId, foodName, foodPrice, onPress }) {
           {foodName}
         </Text>
         <Text style={styles.foodPrice} numberOfLines={1}>
-          MYR {foodPrice}
+          PRICE: MYR {foodPrice}
         </Text>
       </View>
       <TouchableOpacity onPress={() => onPress(foodId)}>
@@ -29,6 +29,7 @@ function Food({ foodId, foodName, foodPrice, onPress }) {
 
 const styles = StyleSheet.create({
   card: {
+    alignItems: "center",
     backgroundColor: colors.darkGreen,
     borderRadius: 10,
     flexDirection: "row",
