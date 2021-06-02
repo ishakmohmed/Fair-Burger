@@ -68,6 +68,7 @@ function OrderScreen() {
 
   const handleSubmit = async () => {
     await orderApi.addOrder(orderData);
+    await loadFoods(user.id);
   };
 
   return (
@@ -82,7 +83,7 @@ function OrderScreen() {
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      {/* <ActivityIndicator2 visible={loading} /> */}
+      <ActivityIndicator2 visible={foodLoading} />
       <Form
         initialValues={{
           customer: "",

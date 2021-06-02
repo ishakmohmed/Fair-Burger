@@ -12,6 +12,7 @@ export default useApi = (apiFunc) => {
 
     setError(!response.ok);
     setData(response.data);
+    console.log("NEW DATA HAS BEEN REQUESTED, THE DATA IS >>> ", data);
     return response;
   };
 
