@@ -5,7 +5,12 @@ import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function FoodInOrderScreen({ addButtonVisible, foodName, foodPrice, onPress }) {
+function FoodInOrderScreen({
+  addButtonVisible,
+  foodName,
+  foodPrice,
+  onPress,
+}) {
   const [changeableQuantity, setChangeableQuantity] = useState(0);
   const [visible, setVisible] = useState(addButtonVisible);
 
