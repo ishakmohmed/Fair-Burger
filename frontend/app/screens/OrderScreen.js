@@ -21,11 +21,54 @@ const validationSchema = Yup.object().shape({
 function OrderScreen() {
   const { user } = useContext(AuthContext);
 
-  const handlePressReloadButton = () => {};
+  let orderData = {};
+  let orderItems = [];
+
+  const {
+    data: foodData,
+    loading: foodLoading,
+    request: loadFoods,
+  } = useApi(foodApi.getFoods);
+
+  useEffect(() => {
+    loadFoodsInitially();
+  }, []);
+
+  const loadFoodsInitially = async () => {
+    await loadFoods(user.id);
+  };
+
+  const handlePressReloadButton = async () => {
+    await loadFoods(user.id);
+  };
 
   const handlePressCrossButton = () => {};
 
-  const handleSubmit = () => {};
+  const handlePressAddButton = (foodName, changeableQuantity, foodPrice) => {
+    orderItems.push({
+      name: foodName,
+      qty: changeableQuantity,
+      price: foodPrice,
+    });
+
+    orderData = {
+      ...orderData,
+      userId: user.id,
+      orderItems: orderItems,
+    };
+  };
+
+  const handleDataRepackaging = async (data, { resetForm }) => {
+    const { customer } = data;
+    orderData = { ...orderData, customer };
+
+    handleSubmit();
+    resetForm();
+  };
+
+  const handleSubmit = async () => {
+    await orderApi.addOrder(orderData);
+  };
 
   return (
     <Screen style={styles.container}>
@@ -44,7 +87,7 @@ function OrderScreen() {
         initialValues={{
           customer: "",
         }}
-        onSubmit={handleSubmit}
+        onSubmit={handleDataRepackaging}
         validationSchema={validationSchema}
       >
         <Text style={styles.text}>Customer Name</Text>
@@ -57,7 +100,7 @@ function OrderScreen() {
         <Text style={styles.text}>Order Items</Text>
         <View>
           <ScrollView horizontal style={styles.scrollView}>
-            {/* {foods.map((food) => (
+            {foodData.map((food) => (
               <FoodInOrderScreen
                 addButtonVisible={true}
                 key={food._id}
@@ -66,7 +109,7 @@ function OrderScreen() {
                 foodPrice={food.price}
                 onPress={handlePressAddButton}
               />
-            ))} */}
+            ))}
           </ScrollView>
         </View>
         <SubmitButton title="Add Order" color="green" />

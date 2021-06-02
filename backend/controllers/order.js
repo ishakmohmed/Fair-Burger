@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import Order from "../models/order.js";
 
 const addOrder = asyncHandler(async (req, res) => {
+  console.log("req.body issss ", req.body);
   const { userId, customer, orderItems } = req.body;
 
   if (!userId || !customer || !orderItems) {

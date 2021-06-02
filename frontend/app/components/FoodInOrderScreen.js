@@ -5,13 +5,7 @@ import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function FoodInOrderScreen({
-  addButtonVisible,
-  foodId,
-  foodName,
-  foodPrice,
-  onPress,
-}) {
+function FoodInOrderScreen({ addButtonVisible, foodName, foodPrice, onPress }) {
   const [changeableQuantity, setChangeableQuantity] = useState(0);
   const [visible, setVisible] = useState(addButtonVisible);
 
@@ -63,7 +57,7 @@ function FoodInOrderScreen({
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                onPress(foodId, changeableQuantity, foodPrice);
+                onPress(foodName, changeableQuantity, foodPrice);
                 handlePressAddButton();
               }}
             >
