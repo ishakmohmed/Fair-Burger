@@ -39,8 +39,6 @@ function QueueScreen() {
     await loadOrders(user.id);
   };
 
-  console.log("the data is >>>>>>>>>>>", orderData);
-
   return (
     <Screen style={styles.container}>
       <HeadingText>Currently Waiting</HeadingText>
