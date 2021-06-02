@@ -20,48 +20,12 @@ const validationSchema = Yup.object().shape({
 
 function OrderScreen() {
   const { user } = useContext(AuthContext);
-  const [foods, setFoods] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    loadFoods();
-  }, []);
-
-  let orderItems = [];
-
-  const loadFoods = async () => {
-    setLoading(true);
-    const { data } = await foodApi.getFoods(user.id);
-    setLoading(false);
-    setFoods(data);
-  };
-
-  const handleSubmit = async (data, { resetForm }) => {
-    const orderData = {
-      userId: user.id,
-      customer: data.customer,
-      orderItems: orderItems,
-    };
-
-    await orderApi.addOrder(orderData);
-
-    orderItems = [];
-    resetForm();
-  };
-
-  const handlePressCrossButton = () => {};
 
   const handlePressReloadButton = () => {};
 
-  const handlePressAddButton = (foodId, quantity, price) => {
-    const newOrder = {
-      name: foodId,
-      quantity,
-      price,
-    };
+  const handlePressCrossButton = () => {};
 
-    orderItems.push(newOrder);
-  };
+  const handleSubmit = () => {};
 
   return (
     <Screen style={styles.container}>
@@ -75,7 +39,7 @@ function OrderScreen() {
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
       </View>
-      <ActivityIndicator2 visible={loading} />
+      {/* <ActivityIndicator2 visible={loading} /> */}
       <Form
         initialValues={{
           customer: "",
@@ -93,7 +57,7 @@ function OrderScreen() {
         <Text style={styles.text}>Order Items</Text>
         <View>
           <ScrollView horizontal style={styles.scrollView}>
-            {foods.map((food) => (
+            {/* {foods.map((food) => (
               <FoodInOrderScreen
                 addButtonVisible={true}
                 key={food._id}
@@ -102,7 +66,7 @@ function OrderScreen() {
                 foodPrice={food.price}
                 onPress={handlePressAddButton}
               />
-            ))}
+            ))} */}
           </ScrollView>
         </View>
         <SubmitButton title="Add Order" color="green" />
