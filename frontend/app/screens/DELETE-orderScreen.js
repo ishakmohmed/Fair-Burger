@@ -42,6 +42,8 @@ function OrderScreen() {
     await loadFoods(user.id);
   };
 
+  const handlePressCrossButton = () => {};
+
   const handlePressAddButton = (foodName, changeableQuantity, foodPrice) => {
     orderItems.push({
       name: foodName,
@@ -67,8 +69,6 @@ function OrderScreen() {
   const handleSubmit = async () => {
     await orderApi.addOrder(orderData);
     await loadFoods(user.id);
-    orderData = {};
-    orderItems = [];
   };
 
   return (
@@ -76,6 +76,9 @@ function OrderScreen() {
       <HeadingText>Add Order</HeadingText>
       <View style={styles.helpTextAndReloadButton}>
         <Text style={styles.helpText}>Items from your menu</Text>
+        <TouchableOpacity onPress={handlePressCrossButton}>
+          <Ionicons name="md-close-circle" size={50} color="black" />
+        </TouchableOpacity>
         <TouchableOpacity onPress={handlePressReloadButton}>
           <Ionicons name="reload-circle" size={50} color="black" />
         </TouchableOpacity>
@@ -87,7 +90,7 @@ function OrderScreen() {
         }}
         onSubmit={handleDataRepackaging}
         validationSchema={validationSchema}
-      >  
+      >
         <Text style={styles.text}>Customer Name</Text>
         <FormField
           maxLength={255}
