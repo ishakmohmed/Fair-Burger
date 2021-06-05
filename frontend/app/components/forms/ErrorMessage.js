@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
+
 import colors from "../../config/colors";
 
 function ErrorMessage({ error, visible }) {

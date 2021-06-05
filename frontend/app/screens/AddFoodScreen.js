@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+
 import { Form, FormField, SubmitButton } from "../components/forms";
 import Text from "../components/Text";
 import Screen from "../components/Screen";

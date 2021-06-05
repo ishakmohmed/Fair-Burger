@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+
 import Text from "./Text";
 import colors from "../config/colors";
-import { AntDesign } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function FoodInOrderScreen({ foodName, foodPrice, onPress }) {
   const [changeableQuantity, setChangeableQuantity] = useState(0);

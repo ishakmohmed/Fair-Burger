@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import Text from "./Text";
 import colors from "../config/colors";
-import { Ionicons } from "@expo/vector-icons";
 
 function QueueCard({ data, onPress }) {
   const { customer, _id, orderItems } = data;

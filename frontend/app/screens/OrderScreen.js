@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
+import { Ionicons } from "@expo/vector-icons";
+
 import { Form, FormField, SubmitButton } from "../components/forms";
 import Text from "../components/Text";
 import Screen from "../components/Screen";
@@ -11,7 +13,6 @@ import orderApi from "../api/order";
 import foodApi from "../api/food";
 import AuthContext from "../auth/context";
 import FoodInOrderScreen from "../components/FoodInOrderScreen";
-import { Ionicons } from "@expo/vector-icons";
 import useApi from "../hooks/useApi";
 
 const validationSchema = Yup.object().shape({

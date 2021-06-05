@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
+
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import Button from "../components/Button";

@@ -1,8 +1,9 @@
 import React from "react";
 import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import Text from "./Text";
 import colors from "../config/colors";
-import { Ionicons } from "@expo/vector-icons";
 
 function Food({ foodId, foodName, foodPrice, onPress }) {
   return (

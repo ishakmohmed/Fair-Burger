@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import Screen from "../components/Screen";
 import HeadingText from "../components/HeadingText";
 import Text from "../components/Text";
 import AuthContext from "../auth/context";
-import { Ionicons } from "@expo/vector-icons";
 import orderApi from "../api/order";
 import ActivityIndicator2 from "../components/ActivityIndicator2";
 import colors from "../config/colors";
