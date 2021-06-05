@@ -4,7 +4,7 @@ import TabBar from "../components/TabBar";
 import OrderScreen from "../screens/OrderScreen";
 import QueueScreen from "../screens/QueueScreen";
 import AddFoodScreen from "../screens/AddFoodScreen";
-import DeleteFoodScreen from "../screens/DeleteFoodScreen";
+import MenuScreen from "../screens/MenuScreen";
 import LogoutScreen from "../screens/LogoutScreen";
 
 const Tab = createBottomTabNavigator();
@@ -28,9 +28,9 @@ const AppNavigator = () => {
         initialParams={{ icon: "fastfood" }}
       />
       <Tab.Screen
-        name="-food"
-        component={DeleteFoodScreen}
-        initialParams={{ icon: "no-food" }}
+        name="menu"
+        component={MenuScreen}
+        initialParams={{ icon: "restaurant-menu" }}
       />
       <Tab.Screen
         name="logout"

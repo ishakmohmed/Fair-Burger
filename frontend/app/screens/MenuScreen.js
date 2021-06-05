@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import AuthContext from "../auth/context";
 import colors from "../config/colors";
 
-function DeleteFoodScreen() {
+function MenuScreen() {
   const { user } = useContext(AuthContext);
   const {
     data: foodData,
@@ -40,7 +40,7 @@ function DeleteFoodScreen() {
 
   return (
     <Screen style={styles.container}>
-      <HeadingText>Delete Food</HeadingText>
+      <HeadingText>Menu</HeadingText>
       <View style={styles.helpTextAndReloadButton}>
         <Text style={styles.helpText}>This is your menu</Text>
         <TouchableOpacity onPress={handlePress}>
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DeleteFoodScreen;
+export default MenuScreen;

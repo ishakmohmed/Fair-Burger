@@ -38,7 +38,7 @@ function AddFoodScreen() {
 
   return (
     <Screen style={styles.container}>
-      <HeadingText>Add Food</HeadingText>
+      <HeadingText>Add Menu Food</HeadingText>
       <Form
         initialValues={{
           name: "",

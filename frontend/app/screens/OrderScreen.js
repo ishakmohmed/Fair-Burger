@@ -87,7 +87,7 @@ function OrderScreen() {
         }}
         onSubmit={handleDataRepackaging}
         validationSchema={validationSchema}
-      >  
+      >
         <Text style={styles.text}>Customer Name</Text>
         <FormField
           maxLength={255}
@@ -111,6 +111,9 @@ function OrderScreen() {
             ))}
           </ScrollView>
         </View>
+        <Text style={styles.info}>
+          Reload to reset order items & reload new menu
+        </Text>
         <SubmitButton title="Add Order" color="green" />
       </Form>
     </Screen>
@@ -135,6 +138,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginVertical: 15,
+  },
+  info: {
+    color: colors.medium,
+    fontSize: 14,
   },
   scrollView: {
     backgroundColor: colors.light,
