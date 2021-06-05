@@ -2,6 +2,6 @@ Note to myself:
 
 I didn't implement protectRoute middleware like I did
 in UNITAR Merch House MERN stack project. However, when 
-you build final year project later on in React Native and 
+you build final year project later on using React Native and 
 Node, please add protectRoute middleware to necessary 
 endpoints.
