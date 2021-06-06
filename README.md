@@ -2,6 +2,7 @@
 # Fair Burger
 
 ### [1] See Live Version Immediately
+If you're rushing, you may view the screenshots right away (see point 5 below). If no, keep reading to access the app from your mobile phone.
 
 Android Users:
 
