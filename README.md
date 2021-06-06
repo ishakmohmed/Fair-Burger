@@ -33,6 +33,7 @@ Fair Burger is a full stack mobile application made using React Native. It is cr
 * Caching
 * JWT authentication
 * Heroku 
+
 Note: no design library is used. The entire UI of this application is built from the ground up.
 
 ### [5] Screenshots
