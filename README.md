@@ -75,7 +75,7 @@ If you want to just view the completed version of this app, refer point 1 above.
     PORT=5000
     MONGO_URI=mongodb://localhost:27017/temporaryDB
     JWT_SECRET_KEY=thisisafakejwtsecretkey
-Then install all frontend and backend dependencies by typing ```npm i``` in terminal for frontend and backend folder individually. Then, run the backend server by typing ```nodemon index.js``` in the terminal under backend folder. Then, launch the app from the frontend folder in the terminal by typing ```npm start```. A website will be launched. Follow the instructions in that site to view the app in your mobile phone. If the instructions change in future, please paste this phrase to Google search engine and do a super quick research: "How to run an Expo app from my mobile phone".  
+Then install all frontend and backend dependencies by typing ```npm i``` in terminal for frontend and backend folder individually. Then, run the backend server by typing ```nodemon index.js``` in the terminal under backend folder. Then, launch the app from the frontend folder in the terminal by typing ```npm start```. A website will be launched. Follow the instructions in that site to view the app on your mobile phone. If the instructions change in future, please paste this phrase to Google search engine and do a super quick research: "How to run an Expo app from my mobile phone".  
 
 ### [7] Hosting
 * Frontend: Expo
