@@ -69,7 +69,7 @@ Note: no design library is used. The entire UI of this application is built from
 ![11](https://user-images.githubusercontent.com/52876913/120933461-d7ec2d00-c72c-11eb-81a0-ab3fab806f91.png)
 
 ### [6] How to Run the Project
-If you want to just view the completed version of this app, refer point 1 above. Otherwise, keep reading. Fork this repository and clone it to your machine. Make sure you've got Node, MongoDB, and Expo CLI installed on your machine. You may Google how to do so as it's very simple and I don't want to pollute my README file. In the backend folder, add a .env file and paste the following code:
+If you want to just view the completed version of this app, refer point 1 above. Otherwise, keep reading. Fork this repository and clone it to your machine. Make sure you've got Node, MongoDB, and Expo CLI installed on your machine. You may Google how to do so as it's very simple and I don't want to pollute my README file and bore you with too much of instructions. In the backend folder, add a .env file and paste the following code:
     
     NODE_ENV=development
     PORT=5000
