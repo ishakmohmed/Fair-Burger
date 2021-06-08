@@ -11,7 +11,8 @@ Head over to following link and scan the QR code from Expo Go app: https://expo.
 
 iOS Users:
 
-Head over to following link and scan the QR code from your phone using any preferred way to scan QR codes: https://expo.io/@ishakmohmed/fairburger?release-channel=staging
+Install Expo Go using this link: https://apps.apple.com/my/app/expo-go/id982107779
+Head over to following link and scan the QR code from Expo Go app: https://expo.io/@ishakmohmed/fairburger?release-channel=staging
 
 ### [2] Demo Credentials (also included in login page)
 * Email: masteruser@email.com
