@@ -7,11 +7,13 @@ If you're rushing, you could skip viewing the live app and view the screenshots 
 Android Users:
 
 Install Expo Go using this link: https://play.google.com/store/apps/details?id=host.exp.exponent 
+
 Head over to following link and scan the QR code from Expo Go app: https://expo.io/@ishakmohmed/fairburger?release-channel=staging
 
 iOS Users:
 
 Install Expo Go using this link: https://apps.apple.com/my/app/expo-go/id982107779
+
 Head over to following link and scan the QR code from Expo Go app: https://expo.io/@ishakmohmed/fairburger?release-channel=staging
 
 ### [2] Demo Credentials (also included in login page)
