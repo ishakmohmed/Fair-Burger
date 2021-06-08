@@ -16,7 +16,6 @@ Install Expo Go using this link: https://apps.apple.com/my/app/expo-go/id9821077
 
 Head over to following link and scan the QR code from Expo Go app: https://expo.io/@ishakmohmed/fairburger?release-channel=staging
 
-
 ### [2] Demo Credentials (also included in login page)
 * Email: masteruser@email.com
 * Password: Masteruser975
