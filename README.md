@@ -25,6 +25,7 @@ Fair Burger is a full stack mobile application made using React Native. It is cr
 
 ### [4] Technologies Used/Features Implemented
 * React Native
+* React Navigation
 * React Hooks
 * Expo 
 * Apisauce
