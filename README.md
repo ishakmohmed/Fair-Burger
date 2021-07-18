@@ -42,34 +42,44 @@ Fair Burger is a full stack mobile application made using React Native. It is cr
 Note: no design library is used. The entire UI of this application is built from the ground up.
 
 ### [5] Screenshots
-#### Home screen of Fair Burger
+Home screen of Fair Burger:
+
 ![1](https://user-images.githubusercontent.com/52876913/120933155-62339180-c72b-11eb-858a-7ae61097ba74.png)
 
-#### Login screen
+Login screen:
+
 ![3](https://user-images.githubusercontent.com/52876913/120933274-f00f7c80-c72b-11eb-86d3-5b421099c33d.png)
 
-#### Queue screen
+Queue screen:
+
 ![4](https://user-images.githubusercontent.com/52876913/120933293-06b5d380-c72c-11eb-98d7-9346e0a46bd1.png)
 
-#### Queue screen when loading (animated)
+Queue screen when loading (animated):
+
 ![5](https://user-images.githubusercontent.com/52876913/120933332-3cf35300-c72c-11eb-8586-78ea070e9017.png)
 
-#### Add order screen
+Add order screen:
+
 ![6](https://user-images.githubusercontent.com/52876913/120933342-509eb980-c72c-11eb-8bfa-205273e65d95.png)
 
-#### Add order screen when quantity is increased
+Add order screen when quantity is increased:
+
 ![7](https://user-images.githubusercontent.com/52876913/120933374-76c45980-c72c-11eb-8821-4c7b8cb004f6.png)
 
-#### Add menu screen
+Add menu screen:
+
 ![8](https://user-images.githubusercontent.com/52876913/120933385-8479df00-c72c-11eb-838c-5627e1d19170.png)
 
-#### Menu screen
+Menu screen:
+
 ![9](https://user-images.githubusercontent.com/52876913/120933406-9bb8cc80-c72c-11eb-9e28-cc7ba494b181.png)
 
-#### Menu screen when an item is deleted or menu is loaded (animated)
+Menu screen when an item is deleted or menu is loaded (animated):
+
 ![10](https://user-images.githubusercontent.com/52876913/120933420-ad01d900-c72c-11eb-8695-4dbd0e20759a.png)
 
-#### Logout screen (animated)
+Logout screen (animated):
+
 ![11](https://user-images.githubusercontent.com/52876913/120933461-d7ec2d00-c72c-11eb-81a0-ab3fab806f91.png)
 
 ### [6] How to Run the Project Locally
