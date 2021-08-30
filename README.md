@@ -1,4 +1,3 @@
-
 # Fair Burger
 
 ### [1] See Live Version Immediately
