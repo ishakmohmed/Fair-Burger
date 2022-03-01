@@ -3,7 +3,7 @@
 ### [1] See Live Version Immediately
 If you're rushing, you could skip viewing the live app and view the screenshots right away (see point 5 below). If no, keep reading to access the app from your mobile phone.
 
-##### Android Users:
+#### Android Users:
 
 Install Expo Go using this link: https://play.google.com/store/apps/details?id=host.exp.exponent 
 
