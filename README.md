@@ -41,16 +41,8 @@ Fair Burger is a full stack mobile application made using React Native. It is cr
 Note: no design library is used. The entire UI of this application is built from the ground up.
 
 ### [5] Screenshots
-Home screen of Fair Burger:
-
 ![Mohmed Ishak](https://user-images.githubusercontent.com/52876913/136454607-30194fcb-5275-4cf8-be32-a6080c975fd7.png)
-
-Queue screen:
-
 ![Mohmed Ishak](https://user-images.githubusercontent.com/52876913/136455029-cec58511-a8cd-4bb2-944b-5afc24eb20c9.png)
-
-Add order screen when quantity is increased:
-
 ![Mohmed Ishak](https://user-images.githubusercontent.com/52876913/136455346-cd78dd72-58c5-4c5f-a6a8-0f94d0f46089.png)
 
 ### [6] How to Run the Project Locally
