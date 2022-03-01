@@ -9,7 +9,7 @@ Install Expo Go using this link: https://play.google.com/store/apps/details?id=h
 
 Head over to following link and scan the QR code from Expo Go app: https://expo.io/@ishakmohmed/fairburger?release-channel=staging
 
-iOS Users:
+#### iOS Users:
 
 Install Expo Go using this link: https://apps.apple.com/my/app/expo-go/id982107779 . `UNFORTUNATELY`, before scanning the QR code from the following link, you need to login using the same credentials that was used to develop this app because of Apple's policy which I can't share here due to privacy concerns as this repo is public. If you don't have an Android device, message me so that I can give you the login credentials for Expo Go.
 
